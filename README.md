@@ -1,1 +1,2 @@
 # conf
+- tig: tig/tigrc

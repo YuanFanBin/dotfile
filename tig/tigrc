@@ -1,0 +1,17 @@
+# View specific color
+color directory yellow default
+color file      yellow default
+
+color "---"         magenta default
+color "index "      magenta default
+color "deff-tree"   magenta default
+color "Merge: "     magenta default
+color "parent "     magenta default
+color "tree "       magenta default
+color date          magenta default
+color grep.file     magenta default
+#color title-blur    white magenta
+#color title-focus   white magenta bold
+color help-group    magenta default
+color diff-stat     magenta default
+color graph-commit  magenta default
