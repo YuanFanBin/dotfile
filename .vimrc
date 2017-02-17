@@ -1,8 +1,6 @@
-" import .vimrc
-" ======================================================================
+" vim:fdm=marker
 "
-" ================================LEADER================================
-" leader 键配置
+" leader 键配置 {{{
 " --------------------------------BEGIN---------------------------------
 let mapleader = " "
 nmap <leader>w :w<CR>
@@ -19,8 +17,9 @@ nmap <leader>f :noautocmd execute "lvimgrep /" . expand("<cword>") . "/gj **/*" 
 nmap <leader>s :Ack<CR>
 nmap <leader>a :Ack 
 " --------------------------------END-----------------------------------
+"  }}}
 "
-" 判断操作系统、终端 or Gvim
+" 判断操作系统、终端 or Gvim {{{
 " --------------------------------BEGIN---------------------------------
 " Windows or Linux
 let g:isWindows = 0
@@ -31,9 +30,9 @@ else
   let g:isLinux = 1
 endif
 " --------------------------------END-----------------------------------
+" }}}
 "
-"
-" 针对Gvim处理图形界面
+" 针对Gvim处理图形界面 {{{
 " --------------------------------BEGIN---------------------------------
 set go=                     " 不要图形按钮
 "set guioptions-=m          " 菜单
@@ -44,8 +43,9 @@ set guioptions+=r           " 滚动条
 " winpos 300 80             " 窗口出现位置
 "set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " 设置字体（需安装）
 " --------------------------------END-----------------------------------
+" }}}
 "
-" 字体及编码解码设置
+" 字体及编码解码设置 {{{
 " --------------------------------BEGIN---------------------------------
 set nocompatible
 " 禁用vi兼容模式，避免以前版本BUG和局限性
@@ -61,8 +61,9 @@ set fencs=utf-8,ucs-bom,gbk,shift-jis,gb18030,gb2312,cp936,latin-1
   set fenc=utf-8
 "endif
 " --------------------------------END-----------------------------------
+" }}}
 "
-" 默认配置
+" 默认配置 {{{
 " --------------------------------BEGIN---------------------------------
 syntax on                       " 语法高亮
 set backspace=2                 " 使backspace正常处理indent，eol，start等
@@ -90,8 +91,9 @@ set matchtime=1                 " 匹配括号高亮时间(单位0.1 sec)
 set showmatch                   " 高亮显示匹配的括号
 set fillchars=vert:\ ,stl:\ ,stlnc:\  " 在被分割的窗口间显示空白，便于阅读
 " --------------------------------END-----------------------------------
+" }}}
 "
-"  状态栏配置
+"  状态栏配置 {{{
 " --------------------------------BEGIN---------------------------------
 set laststatus=2 " 启用状态栏信息 [1]启动显示 [2]总是显示
 set ruler        " 显示标尺
@@ -100,8 +102,9 @@ set cmdheight=2  " 设置命令行高度为2,默认1
 set wildmenu     " 增强模式下命令行Tab
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}  " 状态行显示的内容
 " --------------------------------END-----------------------------------
+" }}}
 "
-"  键盘映射
+"  键盘映射 {{{
 " --------------------------------BEGIN---------------------------------
 " CTRL+A 全选复制
 " map <C-A> ggVGY
@@ -116,8 +119,9 @@ nmap cS :%s/\s\+$//g<CR>:noh<CR>
 nmap cM :%s/\r$//g<CR>:noh<CR>
 "autocmd vimenter * copen 5
 " --------------------------------END-----------------------------------
+" }}}
 "
-" 其他配置
+" 其他配置 {{{
 " --------------------------------BEGIN---------------------------------
 set writebackup            " 保存文件前建立备份,保存成功后删除备份
 set nobackup               " 设置无备份文件
@@ -135,23 +139,27 @@ filetype plugin indent on  " 特定文件特定缩进
 " quickfix模式
 autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
 " --------------------------------END-----------------------------------
+" }}}
 "
-" 配色及主题
+" 配色及主题 {{{
 " --------------------------------BEGIN---------------------------------
 set background=dark        " 背景色
 colorscheme desert         " 主题颜色
 hi Search term=bold ctermbg=5 guibg=DarkMagenta
 hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
 " --------------------------------END-----------------------------------
+" }}}
 "
-" 自动加载
+" 自动加载 {{{
 " --------------------------------BEGIN---------------------------------
 " javascript settings
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " --------------------------------END-----------------------------------
+" }}}
 "
+" PLUGIN {{{
 " ================================PLUGIN================================
-" Vundle
+" Vundle {{{
 " --------------------------------BEGIN---------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -230,13 +238,15 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " --------------------------------END-----------------------------------
+" }}}
 "
-" html5 setting
+" html5 setting {{{
 " --------------------------------BEGIN---------------------------------
 let g:html5_event_handler_attributes_complete = 0
 " --------------------------------END-----------------------------------
+" }}}
 "
-" nerdtree settings
+" nerdtree settings {{{
 " --------------------------------BEGIN---------------------------------
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -244,8 +254,9 @@ auto VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <silent> <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " --------------------------------END-----------------------------------
+" }}}
 "
-" airline settings
+" airline settings {{{
 " --------------------------------BEGIN---------------------------------
 let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
@@ -266,8 +277,9 @@ source $VIMRUNTIME/menu.vim
 " 解决consle输出乱码
 language messages zh_CN.utf-8
 " --------------------------------END-----------------------------------
+" }}}
 "
-" emment settings
+" emment settings {{{
 " --------------------------------BEGIN---------------------------------
 let g:user_emmet_mode='n'
 let g:user_emmet_mode='inv'
@@ -277,8 +289,9 @@ let g:user_emmet_install_global=0
 
 " autocmd FileType html,css,EmmetInstall
 " --------------------------------END-----------------------------------
+" }}}
 "
-" neocompletecache settings
+" neocompletecache settings {{{
 " --------------------------------BEGIN---------------------------------
 let g:acp_enableAtStartup=0
 let g:neocomplcache_enable_at_startup=1
@@ -300,8 +313,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 " --------------------------------END-----------------------------------
+" }}}
 "
-" ctrlp settings
+" ctrlp settings {{{
 " --------------------------------BEGIN---------------------------------
 let g:ctrlp_map='<C-p>'
 let g:ctrlp_cmd='CtrlP'
@@ -310,13 +324,15 @@ let g:ctrlp_working_path_mode='ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MaxOSX
 let g:ctrlp_user_command='find %s -type f' "MaxOSX/Linux
 " --------------------------------END-----------------------------------
+" }}}
 "
-" nerdtree
+" nerdtree {{{
 " --------------------------------BEGIN---------------------------------
 let NERDTreeWinSize = 20     " 大小
 " --------------------------------END-----------------------------------
+" }}}
 "
-" vimtweak
+" vimtweak {{{
 " --------------------------------BEGIN---------------------------------
 " 功能:
 " 1.快捷键CTRL+PageUp/PageDown 改变透明度;
@@ -337,8 +353,9 @@ map <C-PageDown> :call TransDown()<CR>
 map <C-F11>      :call SetAlwaysTop()<CR>
 map <F11>        :call SetMaximized()<CR>
 " --------------------------------END-----------------------------------
+" }}}
 "
-" CTags & Taglist
+" CTags & Taglist {{{
 " --------------------------------BEGIN---------------------------------
 " 功能：
 " 1.<F9>打开和关闭Taglist
@@ -355,8 +372,9 @@ let Tlist_GainFocus_On_ToggleOpen   = 0
 " 打开和关闭Taglist
 nmap <silent> <F9> :TlistToggle<CR>
 " --------------------------------END-----------------------------------
+" }}}
 "
-" syntatic
+" syntatic {{{
 " --------------------------------BEGIN---------------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -367,25 +385,30 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " --------------------------------END-----------------------------------
+" }}}
 " ================================PLUGIN================================
+" }}}
 "
+" FUNCTION {{{
 " ================================FUNCTION==============================
-
-" Gvim透明度上调
+"
+" Gvim透明度上调 {{{
 func! TransUp()
   let g:vimtweakTrans += g:vimtweakTransDelta
   let g:vimtweakTrans = (g:vimtweakTrans > 255 ? 255 : g:vimtweakTrans)
   call libcallnr("vimtweak.dll", "SetAlpha", g:vimtweakTrans)
 endfunc
-
-" Gvim透明度下调
+" }}}
+"
+" Gvim透明度下调 {{{
 func! TransDown()
   let g:vimtweakTrans -= g:vimtweakTransDelta
   let g:vimtweakTrans = (g:vimtweakTrans < g:vimtweakTransMini ? g:vimtweakTransMini : g:vimtweakTrans)
   call libcallnr("vimtweak.dll", "SetAlpha", g:vimtweakTrans)
 endfunc
-
-" Gvim总是最前
+" }}}
+"
+" Gvim总是最前 {{{
 func! SetAlwaysTop()
   let g:vimtweakTopMost = (g:vimtweakTopMost ? 0 : 1)
   call libcallnr("vimtweak.dll", "EnableTopMost", g:vimtweakTopMost)
@@ -395,8 +418,9 @@ func! SetAlwaysTop()
     exec "echo \"Cancel Always Top.\""
   endif
 endfunc
-
-" Gvim窗口最大化
+" }}}
+"
+" Gvim窗口最大化 {{{
 func! SetMaximized()
   let g:vimtweakMaximized = (g:vimtweakMaximized ? 0 : 1)
   call libcallnr("vimtweak.dll", "EnableMaximize", g:vimtweakMaximized)
@@ -406,8 +430,9 @@ func! SetMaximized()
     exec "echo \"Cancel The Maximization.\""
   endif
 endfunc
-
-" 自动插入文件头
+" }}}
+"
+" 自动插入文件头 {{{
 "autocmd BufNewFile *.cpp *.[ch], *.sh, *.java exec :call SetTitle()
 " 设置文件头
 func! SetTitle()
@@ -419,4 +444,6 @@ func! SetTitle()
   " 新建文件后,自动定位到文件末尾
   autocmd BufNewFile * normal G
 endfunc
+" }}}
 " ================================FUNCTION==============================
+" }}}
