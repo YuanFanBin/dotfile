@@ -4,6 +4,7 @@
 --ignore-dir=public/assets
 --ignore-file=is:tags
 --ignore-file=is:.keep
+--ignore-file=ext:log
 --color
 --follow
 --group

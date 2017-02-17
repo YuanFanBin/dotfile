@@ -209,7 +209,7 @@ Plugin 'scrooloose/syntastic'
 " vim-gitgutter git修改提示
 Plugin 'airblade/vim-gitgutter'
 " ycm
-Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'
 " ack 项目词搜索( install 'ack' command )
 Plugin 'mileszs/ack.vim'
 
