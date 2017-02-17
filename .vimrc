@@ -9,11 +9,10 @@ nmap <leader>h <C-W>h
 nmap <leader>j <C-W>j
 nmap <leader>k <C-W>k
 nmap <leader>l <C-W>l
-nmap <leader>tn :tabnew .<CR>
+nmap <leader>n :tabnew .<CR>
 nmap <leader>ml :set ft=html<CR>
 nmap <leader>> <C-W>5>
 nmap <leader>< <C-W>5<
-nmap <leader>f :noautocmd execute "lvimgrep /" . expand("<cword>") . "/gj **/*" <Bar> lw<CR>
 nmap <leader>s :Ack<CR>
 nmap <leader>a :Ack 
 " --------------------------------END-----------------------------------
