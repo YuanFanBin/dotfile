@@ -219,6 +219,10 @@ Plugin 'airblade/vim-gitgutter'
 " Plugin 'valloric/youcompleteme'
 " ack 项目词搜索( install 'ack' command )
 Plugin 'mileszs/ack.vim'
+" 快速跳转
+Plugin 'easymotion/vim-easymotion'
+" 多光标操作
+Plugin 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
