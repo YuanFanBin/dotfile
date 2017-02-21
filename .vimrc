@@ -12,9 +12,14 @@ nmap <leader>l <C-W>l
 nmap <leader>n :tabnew .<CR>
 nmap <leader>> <C-W>5>
 nmap <leader>< <C-W>5<
+" ack.vim
 nmap <leader>s :Ack<CR>
 nmap <leader>a :Ack 
+" foldmethod
 nmap <leader>f :set fdm=indent<CR>
+" vim-hsftp
+nmap <leader>u :Hupload<CR>
+nmap <leader>d :Hupdir<CR>
 " --------------------------------END-----------------------------------
 "  }}}
 "
@@ -209,7 +214,7 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 " php.vim
 Plugin 'stanangeloff/php.vim'
-" ctrlp
+" ctrlp 模糊搜索
 Plugin 'kien/ctrlp.vim'
 " syntastic 语法检查
 Plugin 'scrooloose/syntastic'
@@ -223,6 +228,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'easymotion/vim-easymotion'
 " 多光标操作
 Plugin 'terryma/vim-multiple-cursors'
+" sftp 上传下载文件
+Plugin 'hesselbom/vim-hsftp'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -387,6 +394,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" --------------------------------END-----------------------------------
+" }}}
+"
+" vim-hsftp {{{
+" --------------------------------BEGIN---------------------------------
+" $ vim your-project/.hsftp
+" ```.hsftp
+" host   1.1.1.1
+" user   username
+" pass   test123
+" port   22
+" remote /var/www/
+" confirm_download 0
+" confirm_upload 0
+" ```
 " --------------------------------END-----------------------------------
 " }}}
 " ================================PLUGIN================================
