@@ -411,15 +411,18 @@ let g:syntastic_check_on_wq = 0
 " ```
 " 改一下代码，更加方便
 " $ ~/.vim/bundle/vim-hsftp/plugin/hsftp.vim
-"    --> H_UploadFile
+"   ---> H_UploadFile
 " +   let prompt = printf('Upload file %s?', conf['localpath'])
 " +   let choice = confirm(prompt, "&Yes\n&No", 2)
-"    --> H_UploadFolder
-" +   let choice  = confirm(printf('Upload dir %s?', expand('%:p:h')), "&Yes\n&No", 2)
+"   ---> H_UploadFolder
+" +   let local_dir = expand('%:p:h')
+" +   let remote_dir = conf['remote'] . expand('%:h:h')
+" +   let choice  = confirm(printf('Upload dir %s?', local_dir), "&Yes\n&No", 2)
 " +   if choice != 1
 " +       echo 'Canceled.'
 " +       return
 " +   endif
+" +   let action = action . printf('expect \"sftp>\"; send \"put -r %s %s\r\";', local_dir, remote_dir)
 " -   if conf['confirm_upload'] == 1
 " -     let prompt = printf('Upload file %s?', conf['localpath'])
 " -     let choice = confirm(prompt, "&Yes\n&No", 2)
