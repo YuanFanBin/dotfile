@@ -18,8 +18,8 @@ nmap <leader>a :Ack
 " foldmethod
 nmap <leader>f :set fdm=indent<CR>
 " vim-hsftp
-nmap <leader>u :Hupload<CR>
-nmap <leader>d :Hupdir<CR>
+nmap <leader>uf :Hupload<CR>
+nmap <leader>ud :Hupdir<CR>
 " --------------------------------END-----------------------------------
 "  }}}
 "
@@ -409,6 +409,25 @@ let g:syntastic_check_on_wq = 0
 " confirm_download 0
 " confirm_upload 0
 " ```
+" 改一下代码，更加方便
+" $ ~/.vim/bundle/vim-hsftp/plugin/hsftp.vim
+"    --> H_UploadFile
+" +   let prompt = printf('Upload file %s?', conf['localpath'])
+" +   let choice = confirm(prompt, "&Yes\n&No", 2)
+"    --> H_UploadFolder
+" +   let choice  = confirm(printf('Upload dir %s?', expand('%:p:h')), "&Yes\n&No", 2)
+" +   if choice != 1
+" +       echo 'Canceled.'
+" +       return
+" +   endif
+" -   if conf['confirm_upload'] == 1
+" -     let prompt = printf('Upload file %s?', conf['localpath'])
+" -     let choice = confirm(prompt, "&Yes\n&No", 2)
+" -     if choice != 1
+" -       echo 'Canceled.'
+" -       return
+" -     endif
+" -   endif
 " --------------------------------END-----------------------------------
 " }}}
 " ================================PLUGIN================================
