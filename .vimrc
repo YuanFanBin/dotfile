@@ -230,6 +230,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 " sftp 上传下载文件
 Plugin 'hesselbom/vim-hsftp'
+"
+Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
