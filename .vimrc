@@ -183,7 +183,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" vim-commentary
+" vim-commentary 快捷注释(`gc`) 支持 `:Visual`
 Plugin 'tpope/vim-commentary'
 " vim-surround
 Plugin 'tpope/vim-surround'
@@ -255,6 +255,19 @@ filetype plugin indent on    " required
 " --------------------------------END-----------------------------------
 " }}}
 "
+" php.vim {{{
+" --------------------------------BEGIN---------------------------------
+function! PhpSyntaxOverride()
+    hi! def link phpDocTags  phpDefine
+    hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+    autocmd!
+    autocmd FileType php call PhpSyntaxOverride()
+augroup END
+" --------------------------------END-----------------------------------
+" }}}
 " html5 setting {{{
 " --------------------------------BEGIN---------------------------------
 let g:html5_event_handler_attributes_complete = 0
@@ -399,6 +412,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" 其他语法检测依赖 (如: js, css, python, xml ...)
+" https://github.com/humiaozuzu/dot-vimrc#dependencie
 " --------------------------------END-----------------------------------
 " }}}
 "
@@ -436,6 +451,12 @@ let g:syntastic_check_on_wq = 0
 " -       return
 " -     endif
 " -   endif
+" --------------------------------END-----------------------------------
+" }}}
+"
+" vim-gitgutter {{{
+" --------------------------------BEGIN---------------------------------
+set updatetime=250
 " --------------------------------END-----------------------------------
 " }}}
 " ================================PLUGIN================================
