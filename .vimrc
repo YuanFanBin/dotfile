@@ -147,10 +147,13 @@ autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
 "
 " 配色及主题 {{{
 " --------------------------------BEGIN---------------------------------
-set background=dark        " 背景色
-colorscheme desert         " 主题颜色
-hi Search term=bold ctermbg=5 guibg=DarkMagenta
-hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
+set background=dark         " 背景色
+" colorscheme desert        " 主题颜色(desert, industry, morning, murphy)
+" hi Search term=bold ctermbg=5 guibg=DarkMagenta
+" hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
+colorscheme morning         " 主题颜色(desert, industry, morning, murphy)
+hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
+hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
 " --------------------------------END-----------------------------------
 " }}}
 "
