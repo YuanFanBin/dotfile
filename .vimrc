@@ -9,7 +9,7 @@ nmap <leader>h <C-W>h
 nmap <leader>j <C-W>j
 nmap <leader>k <C-W>k
 nmap <leader>l <C-W>l
-nmap <leader>n :tabnew .<CR>
+nmap <leader>t :tabnew .<CR>
 nmap <leader>> <C-W>5>
 nmap <leader>< <C-W>5<
 " ack.vim
@@ -20,6 +20,11 @@ nmap <leader>f :set fdm=indent<CR>
 " vim-hsftp
 nmap <leader>uf :Hupload<CR>
 nmap <leader>ud :Hupdir<CR>
+" buffers
+nmap <leader>n :bn<CR>
+nmap <leader>p :bp<CR>
+" diff
+nmap <leader>dt :diffthis<CR>
 " --------------------------------END-----------------------------------
 "  }}}
 "
