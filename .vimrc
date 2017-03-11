@@ -25,8 +25,18 @@ nmap <leader>n :bn<CR>
 nmap <leader>p :bp<CR>
 " diff
 nmap <leader>dt :diffthis<CR>
+nmap <leader>do :diffoff<CR>
+nmap <leader>cp :set fo-=r<CR>
+nmap <leader>ucp :set fo=r<CR>
 " --------------------------------END-----------------------------------
 "  }}}
+" 
+" autocmd {{{
+" --------------------------------BEGIN---------------------------------
+autocmd FileType js,vue set tabstop=2
+autocmd FileType js,vue set shiftwidth=2
+" --------------------------------END-----------------------------------
+" }}}
 "
 " 判断操作系统、终端 or Gvim {{{
 " --------------------------------BEGIN---------------------------------
@@ -110,6 +120,11 @@ set showcmd      " 显示键入命令
 set cmdheight=2  " 设置命令行高度为2,默认1
 set wildmenu     " 增强模式下命令行Tab
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}  " 状态行显示的内容
+if exists('+colorcolumn')
+    set colorcolumn=80
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 " --------------------------------END-----------------------------------
 " }}}
 "
@@ -119,8 +134,6 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strf
 " map <C-A> ggVGY
 " 删除空行
 map <F2> :g/^\s*$/d<CR>
-" ALT+F2 新建标签
-map <M-F2> :tabnew<CR>
 
 " 键入cS清除行尾空格-clear space
 nmap cS :%s/\s\+$//g<CR>:noh<CR>
@@ -159,6 +172,8 @@ set background=dark         " 背景色
 colorscheme morning         " 主题颜色(desert, industry, morning, murphy)
 hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
 hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
+" fold
+hi Folded term=bold,underline ctermbg=255 guibg=LightMagenta
 " --------------------------------END-----------------------------------
 " }}}
 "
@@ -199,7 +214,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " install nerdtree
 Plugin 'scrooloose/nerdtree'
 " emment
-Plugin 'emmetio/emmet'
+" Plugin 'emmetio/emmet'
+Plugin 'mattn/emmet-vim'
 " html5
 Plugin 'othree/html5.vim'
 " tagbar
@@ -241,7 +257,9 @@ Plugin 'hesselbom/vim-hsftp'
 "
 Plugin 'tpope/vim-dispatch'
 " Vue.js syntastic
-Plugin 'posva/vim-vue'
+" Plugin 'posva/vim-vue'
+" Vue.js syntax
+Plugin 'darthmall/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -284,7 +302,7 @@ augroup END
 "
 " html5 setting {{{
 " --------------------------------BEGIN---------------------------------
-let g:html5_event_handler_attributes_complete = 0
+let g:html5_event_handler_attributes_complete = 1
 " --------------------------------END-----------------------------------
 " }}}
 "
@@ -328,8 +346,8 @@ let g:user_emmet_mode='inv'
 let g:user_emmet_mode='a'
 let g:emmet_html5=0
 let g:user_emmet_install_global=0
-
-" autocmd FileType html,css,EmmetInstall
+let g:user_emmet_leader_key='<C-J>'
+autocmd FileType html,css,vue EmmetInstall
 " --------------------------------END-----------------------------------
 " }}}
 "
