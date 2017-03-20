@@ -444,6 +444,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" eslint: https://github.com/eslint/eslint#global-installation-and-usage
+" ~/.eslintrc.js
+let g:syntastic_javascript_checkers = ['eslint']
 " 其他语法检测依赖 (如: js, css, python, xml ...)
 " https://github.com/humiaozuzu/dot-vimrc#dependencie
 " --------------------------------END-----------------------------------
