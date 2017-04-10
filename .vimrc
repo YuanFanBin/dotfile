@@ -177,6 +177,8 @@ hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
 hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
 " fold
 hi Folded term=bold,underline ctermbg=255 guibg=LightMagenta
+" Pmenu
+hi PmenuSel term=underline cterm=underline gui=underline ctermbg=81 guibg=LightBlue
 " --------------------------------END------------------------------------------
 " }}}
 "
