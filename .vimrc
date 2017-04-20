@@ -20,9 +20,9 @@ nmap <leader>f :set fdm=indent<CR>
 " vim-hsftp
 nmap <leader>uf :Hupload<CR>
 nmap <leader>ud :Hupdir<CR>
-" buffers
-nmap <leader>n :bn<CR>
-nmap <leader>p :bp<CR>
+" NERDTree
+nmap <leader>n :let NERDTreeWinPos="left"<CR> :NERDTree<CR>
+nmap <leader>r :let NERDTreeWinPos="right"<CR> :NERDTree<CR>
 " diff
 nmap <leader>dt :diffthis<CR>
 nmap <leader>do :diffoff<CR>
