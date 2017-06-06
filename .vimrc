@@ -163,6 +163,7 @@ filetype plugin on         " 针对不同文件类型加载对应插件
 filetype plugin indent on  " 特定文件特定缩进
 " quickfix模式
 autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
+set rtp+=/usr/local/opt/fzf " fzf
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -232,7 +233,7 @@ Plugin 'jiangmiao/auto-pairs'
 " phpcomplete
 Plugin 'shawncplus/phpcomplete.vim'
 " powerline fonts
-"Plugin 'powerline/fonts'
+Plugin 'powerline/fonts'    " 需手动安装一下字体
 " vim-airline
 Plugin 'bling/vim-airline'
 " vim-json
