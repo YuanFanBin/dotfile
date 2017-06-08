@@ -266,6 +266,8 @@ Plugin 'tpope/vim-dispatch'
 " Plugin 'posva/vim-vue'
 " Vue.js syntax
 Plugin 'darthmall/vim-vue'
+" ranbow
+Plugin 'luochen1990/rainbow'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
