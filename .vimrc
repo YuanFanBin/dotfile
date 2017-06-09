@@ -1,5 +1,6 @@
 " vim:fdm=marker
 "
+set mouse=a
 " leader 键配置 {{{
 " --------------------------------BEGIN----------------------------------------
 let mapleader = " "
@@ -16,7 +17,7 @@ nmap <leader>< <C-W>5<
 nmap <leader>s :Ack<CR>
 nmap <leader>a :Ack 
 " foldmethod
-nmap <leader>f :set fdm=indent<CR>
+nmap <leader>f :FZF<CR>
 " vim-hsftp
 nmap <leader>uf :Hupload<CR>
 nmap <leader>ud :Hupdir<CR>
@@ -63,7 +64,7 @@ set guioptions+=r           " 滚动条
 "set guioptions-=L
 "au GUIEnter * simalt ~x    " Gvim启动时自动最大化
 " winpos 300 80             " 窗口出现位置
-"set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " 设置字体（需安装）
+set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " 设置字体（需安装）
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -150,7 +151,8 @@ nmap cM :%s/\r$//g<CR>:noh<CR>
 " --------------------------------BEGIN----------------------------------------
 set writebackup            " 保存文件前建立备份,保存成功后删除备份
 set nobackup               " 设置无备份文件
-set clipboard+=unnamed     " 共享剪切板
+" set clipboard+=unnamed     " 共享剪切板
+set clipboard+=unnamedplus     " 共享剪切板
 set confirm                " 保存只读文件时,弹出确认
 set history=1000           " 历史记录数
 set iskeyword+=_,$,@,%,#,- " 带有如下符号单词不被换行分割
@@ -245,7 +247,8 @@ Plugin 'godlygeek/tabular'
 " php.vim
 Plugin 'stanangeloff/php.vim'
 " ctrlp 模糊搜索
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " syntastic 语法检查
 Plugin 'scrooloose/syntastic'
 " vim-gitgutter git修改提示
@@ -385,12 +388,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 "
 " ctrlp settings {{{
 " --------------------------------BEGIN----------------------------------------
-let g:ctrlp_map='<C-p>'
-let g:ctrlp_cmd='CtrlP'
-
-let g:ctrlp_working_path_mode='ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MaxOSX
-let g:ctrlp_user_command='find %s -type f' "MaxOSX/Linux
+"let g:ctrlp_map='<C-p>'
+"let g:ctrlp_cmd='CtrlP'
+"
+"let g:ctrlp_working_path_mode='ra'
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MaxOSX
+"let g:ctrlp_user_command='find %s -type f' "MaxOSX/Linux
 " --------------------------------END------------------------------------------
 " }}}
 "
