@@ -120,7 +120,7 @@ bindsym XF86WakeUp exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ 
 bindsym XF86Display exec "arandr"
 
 bindsym $mod+a exec "lock"
-bindsym $mod+Shift+a exec "pavucontrol"
+bindsym $mod+Shift+a exec "gnome-alsamixer"
 
 bar {
         position top
