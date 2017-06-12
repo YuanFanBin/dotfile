@@ -14,12 +14,13 @@ conky.text = [[
     {"full_text": " ${nodename} ",                        "color":"\#2AA198"},
     {"full_text": " Kernel: $kernel ",                    "color":"\#2AA198"},
 #   {"full_text": " Uptime: ${uptime} ",                  "color":"\#2AA198"},
-    {"full_text": " Battery: $battery_percent% ",         "color":"\#F0E68C"},
+#   {"full_text": " Battery: $battery_percent% ",         "color":"\#F0E68C"},
     {"full_text": " CPU: $acpitemp°C [$cpu%] ",           "color":"\#DC322F"},
     {"full_text": " RAM: $mem / $memmax ($memperc%) ",    "color":"\#B58900"},
 #   {"full_text": " MEM: [$membar]",                      "color":"\#2AA198"},
-    {"full_text": " DOWN: ${downspeedf enp9s0} Kb/s ",    "color":"\#FFD700"},
-    {"full_text": " UP: ${upspeedf enp9s0} Kb/s ",        "color":"\#F0E68C"},
+    {"full_text": " IP: ${addr enp0s31f6} ",              "color":"\#F0E68C"},
+    {"full_text": " DOWN: ${downspeedf enp0s31f6} Kb/s ", "color":"\#FFD700"},
+    {"full_text": " UP: ${upspeedf enp0s31f6} Kb/s ",     "color":"\#F0E68C"},
 #   ```sh
 #   $ timedatectl status
 #   $ timedatectl set-ntp true
