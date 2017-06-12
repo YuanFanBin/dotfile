@@ -1,7 +1,7 @@
 " vim:fdm=marker
 "
 set mouse=a
-" leader ¼üÅäÖÃ {{{
+" leader é”®é…ç½® {{{
 " --------------------------------BEGIN----------------------------------------
 let mapleader = " "
 nmap <leader>w :w<CR>
@@ -42,7 +42,7 @@ autocmd FileType js,vue set shiftwidth=2
 " --------------------------------END------------------------------------------
 " }}}
 "
-" ÅĞ¶Ï²Ù×÷ÏµÍ³¡¢ÖÕ¶Ë or Gvim {{{
+" åˆ¤æ–­æ“ä½œç³»ç»Ÿã€ç»ˆç«¯ or Gvim {{{
 " --------------------------------BEGIN----------------------------------------
 " Windows or Linux
 let g:isWindows = 0
@@ -55,28 +55,28 @@ endif
 " --------------------------------END------------------------------------------
 " }}}
 "
-" Õë¶ÔGvim´¦ÀíÍ¼ĞÎ½çÃæ {{{
+" é’ˆå¯¹Gvimå¤„ç†å›¾å½¢ç•Œé¢ {{{
 " --------------------------------BEGIN----------------------------------------
-set go=                     " ²»ÒªÍ¼ĞÎ°´Å¥
-"set guioptions-=m          " ²Ëµ¥
-"set guioptions-=T          " ¹¤¾ßÌõ
-set guioptions+=r           " ¹ö¶¯Ìõ
+set go=                     " ä¸è¦å›¾å½¢æŒ‰é’®
+"set guioptions-=m          " èœå•
+"set guioptions-=T          " å·¥å…·æ¡
+set guioptions+=r           " æ»šåŠ¨æ¡
 "set guioptions-=L
-"au GUIEnter * simalt ~x    " GvimÆô¶¯Ê±×Ô¶¯×î´ó»¯
-" winpos 300 80             " ´°¿Ú³öÏÖÎ»ÖÃ
-set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " ÉèÖÃ×ÖÌå£¨Ğè°²×°£©
+"au GUIEnter * simalt ~x    " Gvimå¯åŠ¨æ—¶è‡ªåŠ¨æœ€å¤§åŒ–
+" winpos 300 80             " çª—å£å‡ºç°ä½ç½®
+set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " è®¾ç½®å­—ä½“ï¼ˆéœ€å®‰è£…ï¼‰
 " --------------------------------END------------------------------------------
 " }}}
 "
-" ×ÖÌå¼°±àÂë½âÂëÉèÖÃ {{{
+" å­—ä½“åŠç¼–ç è§£ç è®¾ç½® {{{
 " --------------------------------BEGIN----------------------------------------
 set nocompatible
-" ½ûÓÃvi¼æÈİÄ£Ê½£¬±ÜÃâÒÔÇ°°æ±¾BUGºÍ¾ÖÏŞĞÔ
-" Öğ²½¼ì²é£¬Ì½²âÎÄ¼ş±àÂë¸ñÊ½£¬ÒÔÕıÈ·¸ñÊ½´ò¿ª
+" ç¦ç”¨viå…¼å®¹æ¨¡å¼ï¼Œé¿å…ä»¥å‰ç‰ˆæœ¬BUGå’Œå±€é™æ€§
+" é€æ­¥æ£€æŸ¥ï¼Œæ¢æµ‹æ–‡ä»¶ç¼–ç æ ¼å¼ï¼Œä»¥æ­£ç¡®æ ¼å¼æ‰“å¼€
 set fencs=utf-8,ucs-bom,gbk,shift-jis,gb18030,gb2312,cp936,latin-1
 "if g:isWindows
-"  set encoding=gbk " ÉèÖÃÄ¬ÈÏ±àÂë¸ñÊ½
-"  set fenc=gbk " ÉèÖÃµ±Ç°Ê¹ÓÃºÍ±£´æµÄ±àÂë¸ñÊ½
+"  set encoding=gbk " è®¾ç½®é»˜è®¤ç¼–ç æ ¼å¼
+"  set fenc=gbk " è®¾ç½®å½“å‰ä½¿ç”¨å’Œä¿å­˜çš„ç¼–ç æ ¼å¼
 "endif
 
 "if g:isLinux
@@ -86,44 +86,44 @@ set fencs=utf-8,ucs-bom,gbk,shift-jis,gb18030,gb2312,cp936,latin-1
 " --------------------------------END------------------------------------------
 " }}}
 "
-" Ä¬ÈÏÅäÖÃ {{{
+" é»˜è®¤é…ç½® {{{
 " --------------------------------BEGIN----------------------------------------
-syntax on                       " Óï·¨¸ßÁÁ
-set backspace=2                 " Ê¹backspaceÕı³£´¦Àíindent£¬eol£¬startµÈ
-set smartindent                 " ÆôÓÃÖÇÄÜËõ½ø
-set autoindent                  " ×Ô¶¯Ëõ½ø
+syntax on                       " è¯­æ³•é«˜äº®
+set backspace=2                 " ä½¿backspaceæ­£å¸¸å¤„ç†indentï¼Œeolï¼Œstartç­‰
+set smartindent                 " å¯ç”¨æ™ºèƒ½ç¼©è¿›
+set autoindent                  " è‡ªåŠ¨ç¼©è¿›
 set cindent
-set tabstop=4                   " ÉèÖÃTAB¼ü¿í¶È
-set expandtab                   " ½«tabµÄ\t×°»»³É¿Õ¸ñ(noexpandtab)
-set shiftwidth=4                " »»ĞĞÊ±×Ô¶¯Ëõ½ø2¸ö¿Õ¸ñ
-set smarttab                    " ÔÚĞĞºÍ¶Î¿ªÊ¼´¦Ê¹ÓÃÖÆ±í·û
-set autoread                    " µ±ÎÄ¼şÔÚÍâ²¿ĞŞ¸ÄÊ±×Ô¶¯¸üĞÂ
-set autowrite                   " ×Ô¶¯±£´æ
-set ignorecase                  " ËÑË÷ºöÂÔ´óĞ¡Ğ´
-set hlsearch                    " ËÑË÷¸ßÁÁ(nohlsearch)
-set incsearch                   " ËÑË÷Öğ×Ö·û¸ßÁÁ
-set magic                       " ÉèÖÃÄ§Êõ ÓëÕıÔò±í´ïÊ½ÓĞ¹Ø
-set completeopt=longest,menu    " ´úÂë²¹È«
-set nu                          " ĞĞºÅ
+set tabstop=4                   " è®¾ç½®TABé”®å®½åº¦
+set expandtab                   " å°†tabçš„\tè£…æ¢æˆç©ºæ ¼(noexpandtab)
+set shiftwidth=4                " æ¢è¡Œæ—¶è‡ªåŠ¨ç¼©è¿›2ä¸ªç©ºæ ¼
+set smarttab                    " åœ¨è¡Œå’Œæ®µå¼€å§‹å¤„ä½¿ç”¨åˆ¶è¡¨ç¬¦
+set autoread                    " å½“æ–‡ä»¶åœ¨å¤–éƒ¨ä¿®æ”¹æ—¶è‡ªåŠ¨æ›´æ–°
+set autowrite                   " è‡ªåŠ¨ä¿å­˜
+set ignorecase                  " æœç´¢å¿½ç•¥å¤§å°å†™
+set hlsearch                    " æœç´¢é«˜äº®(nohlsearch)
+set incsearch                   " æœç´¢é€å­—ç¬¦é«˜äº®
+set magic                       " è®¾ç½®é­”æœ¯ ä¸æ­£åˆ™è¡¨è¾¾å¼æœ‰å…³
+set completeopt=longest,menu    " ä»£ç è¡¥å…¨
+set nu                          " è¡Œå·
 set backspace=eol,start,indent  " backspace
 set whichwrap+=<,>,h,l
-set cursorline                  " Í»³öÏÔÊ¾µ±Ç°ĞĞ
-"set cursorcolumn               " Í»³öÏÔÊ¾µ±Ç°ÁĞ
+set cursorline                  " çªå‡ºæ˜¾ç¤ºå½“å‰è¡Œ
+"set cursorcolumn               " çªå‡ºæ˜¾ç¤ºå½“å‰åˆ—
 
-set matchtime=1                 " Æ¥ÅäÀ¨ºÅ¸ßÁÁÊ±¼ä(µ¥Î»0.1 sec)
-set showmatch                   " ¸ßÁÁÏÔÊ¾Æ¥ÅäµÄÀ¨ºÅ
-set fillchars=vert:\ ,stl:\ ,stlnc:\  " ÔÚ±»·Ö¸îµÄ´°¿Ú¼äÏÔÊ¾¿Õ°×£¬±ãÓÚÔÄ¶Á
+set matchtime=1                 " åŒ¹é…æ‹¬å·é«˜äº®æ—¶é—´(å•ä½0.1 sec)
+set showmatch                   " é«˜äº®æ˜¾ç¤ºåŒ¹é…çš„æ‹¬å·
+set fillchars=vert:\ ,stl:\ ,stlnc:\  " åœ¨è¢«åˆ†å‰²çš„çª—å£é—´æ˜¾ç¤ºç©ºç™½ï¼Œä¾¿äºé˜…è¯»
 " --------------------------------END------------------------------------------
 " }}}
 "
-"  ×´Ì¬À¸ÅäÖÃ {{{
+"  çŠ¶æ€æ é…ç½® {{{
 " --------------------------------BEGIN----------------------------------------
-set laststatus=2 " ÆôÓÃ×´Ì¬À¸ĞÅÏ¢ [1]Æô¶¯ÏÔÊ¾ [2]×ÜÊÇÏÔÊ¾
-set ruler        " ÏÔÊ¾±ê³ß
-set showcmd      " ÏÔÊ¾¼üÈëÃüÁî
-set cmdheight=2  " ÉèÖÃÃüÁîĞĞ¸ß¶ÈÎª2,Ä¬ÈÏ1
-set wildmenu     " ÔöÇ¿Ä£Ê½ÏÂÃüÁîĞĞTab
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}  " ×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ
+set laststatus=2 " å¯ç”¨çŠ¶æ€æ ä¿¡æ¯ [1]å¯åŠ¨æ˜¾ç¤º [2]æ€»æ˜¯æ˜¾ç¤º
+set ruler        " æ˜¾ç¤ºæ ‡å°º
+set showcmd      " æ˜¾ç¤ºé”®å…¥å‘½ä»¤
+set cmdheight=2  " è®¾ç½®å‘½ä»¤è¡Œé«˜åº¦ä¸º2,é»˜è®¤1
+set wildmenu     " å¢å¼ºæ¨¡å¼ä¸‹å‘½ä»¤è¡ŒTab
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}  " çŠ¶æ€è¡Œæ˜¾ç¤ºçš„å†…å®¹
 if exists('+colorcolumn')
     set colorcolumn=80
 else
@@ -132,49 +132,49 @@ endif
 " --------------------------------END------------------------------------------
 " }}}
 "
-"  ¼üÅÌÓ³Éä {{{
+"  é”®ç›˜æ˜ å°„ {{{
 " --------------------------------BEGIN----------------------------------------
-" CTRL+A È«Ñ¡¸´ÖÆ
+" CTRL+A å…¨é€‰å¤åˆ¶
 " map <C-A> ggVGY
-" É¾³ı¿ÕĞĞ
+" åˆ é™¤ç©ºè¡Œ
 map <F2> :g/^\s*$/d<CR>
 
-" ¼üÈëcSÇå³ıĞĞÎ²¿Õ¸ñ-clear space
+" é”®å…¥cSæ¸…é™¤è¡Œå°¾ç©ºæ ¼-clear space
 nmap cS :%s/\s\+$//g<CR>:noh<CR>
-" ¼üÈëcMÇå³ıĞĞÎ²^M-clear ^M
+" é”®å…¥cMæ¸…é™¤è¡Œå°¾^M-clear ^M
 nmap cM :%s/\r$//g<CR>:noh<CR>
 "autocmd vimenter * copen 5
 " --------------------------------END------------------------------------------
 " }}}
 "
-" ÆäËûÅäÖÃ {{{
+" å…¶ä»–é…ç½® {{{
 " --------------------------------BEGIN----------------------------------------
-set writebackup            " ±£´æÎÄ¼şÇ°½¨Á¢±¸·İ,±£´æ³É¹¦ºóÉ¾³ı±¸·İ
-set nobackup               " ÉèÖÃÎŞ±¸·İÎÄ¼ş
-" set clipboard+=unnamed     " ¹²Ïí¼ôÇĞ°å
-set clipboard+=unnamedplus     " ¹²Ïí¼ôÇĞ°å
-set confirm                " ±£´æÖ»¶ÁÎÄ¼şÊ±,µ¯³öÈ·ÈÏ
-set history=1000           " ÀúÊ·¼ÇÂ¼Êı
-set iskeyword+=_,$,@,%,#,- " ´øÓĞÈçÏÂ·ûºÅµ¥´Ê²»±»»»ĞĞ·Ö¸î
+set writebackup            " ä¿å­˜æ–‡ä»¶å‰å»ºç«‹å¤‡ä»½,ä¿å­˜æˆåŠŸååˆ é™¤å¤‡ä»½
+set nobackup               " è®¾ç½®æ— å¤‡ä»½æ–‡ä»¶
+" set clipboard+=unnamed     " å…±äº«å‰ªåˆ‡æ¿
+set clipboard+=unnamedplus     " å…±äº«å‰ªåˆ‡æ¿
+set confirm                " ä¿å­˜åªè¯»æ–‡ä»¶æ—¶,å¼¹å‡ºç¡®è®¤
+set history=1000           " å†å²è®°å½•æ•°
+set iskeyword+=_,$,@,%,#,- " å¸¦æœ‰å¦‚ä¸‹ç¬¦å·å•è¯ä¸è¢«æ¢è¡Œåˆ†å‰²
 
 if version >= 603
-  set helplang=cn          " ÏÔÊ¾ÖĞÎÄ°ïÖú
+  set helplang=cn          " æ˜¾ç¤ºä¸­æ–‡å¸®åŠ©
 endif
-filetype off               " ÆôÓÃÎÄ¼şÀàĞÍÕì²â
-filetype plugin on         " Õë¶Ô²»Í¬ÎÄ¼şÀàĞÍ¼ÓÔØ¶ÔÓ¦²å¼ş
-filetype plugin indent on  " ÌØ¶¨ÎÄ¼şÌØ¶¨Ëõ½ø
-" quickfixÄ£Ê½
+filetype off               " å¯ç”¨æ–‡ä»¶ç±»å‹ä¾¦æµ‹
+filetype plugin on         " é’ˆå¯¹ä¸åŒæ–‡ä»¶ç±»å‹åŠ è½½å¯¹åº”æ’ä»¶
+filetype plugin indent on  " ç‰¹å®šæ–‡ä»¶ç‰¹å®šç¼©è¿›
+" quickfixæ¨¡å¼
 autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
 set rtp+=/usr/local/opt/fzf " fzf
 " --------------------------------END------------------------------------------
 " }}}
 "
-" ÅäÉ«¼°Ö÷Ìâ {{{
+" é…è‰²åŠä¸»é¢˜ {{{
 " --------------------------------BEGIN----------------------------------------
-set background=dark         " ±³¾°É«
+set background=dark         " èƒŒæ™¯è‰²
 " hi Search term=bold ctermbg=5 guibg=DarkMagenta
 " hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
-colorscheme desert          " Ö÷ÌâÑÕÉ«(desert, industry, morning, murphy)
+colorscheme desert          " ä¸»é¢˜é¢œè‰²(desert, industry, morning, murphy)
 hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
 hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
 " fold
@@ -184,7 +184,7 @@ hi PmenuSel term=underline cterm=underline gui=underline ctermbg=81 guibg=LightB
 " --------------------------------END------------------------------------------
 " }}}
 "
-" ×Ô¶¯¼ÓÔØ {{{
+" è‡ªåŠ¨åŠ è½½ {{{
 " --------------------------------BEGIN----------------------------------------
 " javascript settings
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
@@ -210,7 +210,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" vim-commentary ¿ì½İ×¢ÊÍ(`gc`) Ö§³Ö `:Visual`
+" vim-commentary å¿«æ·æ³¨é‡Š(`gc`) æ”¯æŒ `:Visual`
 Plugin 'tpope/vim-commentary'
 " vim-surround
 Plugin 'tpope/vim-surround'
@@ -234,7 +234,7 @@ Plugin 'jiangmiao/auto-pairs'
 " phpcomplete
 Plugin 'shawncplus/phpcomplete.vim'
 " powerline fonts
-Plugin 'powerline/fonts'    " ĞèÊÖ¶¯°²×°Ò»ÏÂ×ÖÌå
+Plugin 'powerline/fonts'    " éœ€æ‰‹åŠ¨å®‰è£…ä¸€ä¸‹å­—ä½“
 " vim-airline
 Plugin 'bling/vim-airline'
 " vim-json
@@ -245,22 +245,22 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 " php.vim
 Plugin 'stanangeloff/php.vim'
-" ctrlp Ä£ºıËÑË÷
+" ctrlp æ¨¡ç³Šæœç´¢
 " Plugin 'kien/ctrlp.vim'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" syntastic Óï·¨¼ì²é
+" syntastic è¯­æ³•æ£€æŸ¥
 Plugin 'scrooloose/syntastic'
-" vim-gitgutter gitĞŞ¸ÄÌáÊ¾
+" vim-gitgutter gitä¿®æ”¹æç¤º
 Plugin 'airblade/vim-gitgutter'
 " ycm
 " Plugin 'valloric/youcompleteme'
-" ack ÏîÄ¿´ÊËÑË÷( install 'ack' command )
+" ack é¡¹ç›®è¯æœç´¢( install 'ack' command )
 Plugin 'mileszs/ack.vim'
-" ¿ìËÙÌø×ª
+" å¿«é€Ÿè·³è½¬
 Plugin 'easymotion/vim-easymotion'
-" ¶à¹â±ê²Ù×÷
+" å¤šå…‰æ ‡æ“ä½œ
 Plugin 'terryma/vim-multiple-cursors'
-" sftp ÉÏ´«ÏÂÔØÎÄ¼ş
+" sftp ä¸Šä¼ ä¸‹è½½æ–‡ä»¶
 Plugin 'hesselbom/vim-hsftp'
 "
 Plugin 'tpope/vim-dispatch'
@@ -341,10 +341,10 @@ let g:Powerline_symbols='fancy'
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10 "config font for gvim
 set encoding=utf-8
 set fenc=gbk
-" ½â¾ö²Ëµ¥ÂÒÂëÎÊÌâ
+" è§£å†³èœå•ä¹±ç é—®é¢˜
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-" ½â¾öconsleÊä³öÂÒÂë
+" è§£å†³consleè¾“å‡ºä¹±ç 
 language messages zh_CN.utf-8
 " --------------------------------END------------------------------------------
 " }}}
@@ -398,21 +398,21 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 "
 " nerdtree {{{
 " --------------------------------BEGIN----------------------------------------
-let NERDTreeWinSize = 20     " ´óĞ¡
+let NERDTreeWinSize = 20     " å¤§å°
 " --------------------------------END------------------------------------------
 " }}}
 "
 " vimtweak {{{
 " --------------------------------BEGIN----------------------------------------
-" ¹¦ÄÜ:
-" 1.¿ì½İ¼üCTRL+PageUp/PageDown ¸Ä±äÍ¸Ã÷¶È;
-" 2.CTRL+F11¸Ä±äÖÃ¶¥×´Ì¬(ÓĞÖÃ¶¥ĞÅÏ¢ÌáÊ¾!);
-" 3.F11¸Ä±äÇĞ»»´°¿Ú×î´ó»¯;
-let g:vimtweakTrans      = 255 "¶¨Òå³õÊ¼Í¸Ã÷¶È 0~255
-let g:vimtweakTransDelta = 30 "¶¨ÒåÃ¿´ÎÔö¼Ó/¼õÉÙµÄÍ¸Ã÷¶ÈÖµ 0~255
-let g:vimtweakTransMini  = 20 "¶¨Òå×îĞ¡µÄÍ¸Ã÷¶È 0~255
-let g:vimtweakTopMost    = 0 "¶¨Òå³õÊ¼ÊÇ·ñÖÃ¶¥
-let g:vimtweakMaximized  = 0 "¶¨Òå³õÊ¼ÊÇ·ñ×î´ó»¯
+" åŠŸèƒ½:
+" 1.å¿«æ·é”®CTRL+PageUp/PageDown æ”¹å˜é€æ˜åº¦;
+" 2.CTRL+F11æ”¹å˜ç½®é¡¶çŠ¶æ€(æœ‰ç½®é¡¶ä¿¡æ¯æç¤º!);
+" 3.F11æ”¹å˜åˆ‡æ¢çª—å£æœ€å¤§åŒ–;
+let g:vimtweakTrans      = 255 "å®šä¹‰åˆå§‹é€æ˜åº¦ 0~255
+let g:vimtweakTransDelta = 30 "å®šä¹‰æ¯æ¬¡å¢åŠ /å‡å°‘çš„é€æ˜åº¦å€¼ 0~255
+let g:vimtweakTransMini  = 20 "å®šä¹‰æœ€å°çš„é€æ˜åº¦ 0~255
+let g:vimtweakTopMost    = 0 "å®šä¹‰åˆå§‹æ˜¯å¦ç½®é¡¶
+let g:vimtweakMaximized  = 0 "å®šä¹‰åˆå§‹æ˜¯å¦æœ€å¤§åŒ–
 
 au GUIEnter * call libcallnr("vimtweak.dll","EnableTopMost",g:vimtweakTopMost)
 au GUIEnter * call libcallnr("vimtweak.dll","SetAlpha",g:vimtweakTrans)
@@ -427,19 +427,19 @@ map <F11>        :call SetMaximized()<CR>
 "
 " CTags & Taglist {{{
 " --------------------------------BEGIN----------------------------------------
-" ¹¦ÄÜ£º
-" 1.<F9>´ò¿ªºÍ¹Ø±ÕTaglist
-let Tlist_Sort_Type            = "name"  " °´ÕÕÃû³ÆÅÅĞò
-let Tlist_Show_One_file        = 1     " Ö»ÏÔÊ¾µ±Ç°ÎÄ¼şµÄtag
-let Tlist_Use_Right_Window     = 1      " ÔÚÓÒ²àÏÔÊ¾Taglist
-let Tlist_Use_SingleClick      = 1     " µ¥»÷tag¾ÍÌø×ªµ½¶¨Òå
-let Tlist_Compart_Format       = 1      " Ñ¹Ëõ·½Ê½
-let Tlist_Exist_OnlyWindow     = 1      " Èç¹ûTaglistÊÇ×îºóÒ»¸ö´°¿ÚÔòÍË³öVim
-let Tlist_File_Fold_Auto_Close = 0      " ²»Òª¹Ø±ÕÆäËûÎÄ¼şµÄtags
-let Tlist_Enable_Fold_Column   = 0      " ²»ÒªÏÔÊ¾ÕÛµşÊ÷
-" Ê¹ÓÃ:TlistToggle´ò¿ªTaglistÊ±£¬ÊäÈë½¹µãÔÚTaglist
+" åŠŸèƒ½ï¼š
+" 1.<F9>æ‰“å¼€å’Œå…³é—­Taglist
+let Tlist_Sort_Type            = "name"  " æŒ‰ç…§åç§°æ’åº
+let Tlist_Show_One_file        = 1     " åªæ˜¾ç¤ºå½“å‰æ–‡ä»¶çš„tag
+let Tlist_Use_Right_Window     = 1      " åœ¨å³ä¾§æ˜¾ç¤ºTaglist
+let Tlist_Use_SingleClick      = 1     " å•å‡»tagå°±è·³è½¬åˆ°å®šä¹‰
+let Tlist_Compart_Format       = 1      " å‹ç¼©æ–¹å¼
+let Tlist_Exist_OnlyWindow     = 1      " å¦‚æœTaglistæ˜¯æœ€åä¸€ä¸ªçª—å£åˆ™é€€å‡ºVim
+let Tlist_File_Fold_Auto_Close = 0      " ä¸è¦å…³é—­å…¶ä»–æ–‡ä»¶çš„tags
+let Tlist_Enable_Fold_Column   = 0      " ä¸è¦æ˜¾ç¤ºæŠ˜å æ ‘
+" ä½¿ç”¨:TlistToggleæ‰“å¼€Taglistæ—¶ï¼Œè¾“å…¥ç„¦ç‚¹åœ¨Taglist
 let Tlist_GainFocus_On_ToggleOpen   = 0
-" ´ò¿ªºÍ¹Ø±ÕTaglist
+" æ‰“å¼€å’Œå…³é—­Taglist
 nmap <silent> <F9> :TlistToggle<CR>
 " --------------------------------END------------------------------------------
 " }}}
@@ -457,7 +457,7 @@ let g:syntastic_check_on_wq = 0
 " eslint: https://github.com/eslint/eslint#global-installation-and-usage
 " ~/.eslintrc.js
 let g:syntastic_javascript_checkers = ['eslint']
-" ÆäËûÓï·¨¼ì²âÒÀÀµ (Èç: js, css, python, xml ...)
+" å…¶ä»–è¯­æ³•æ£€æµ‹ä¾èµ– (å¦‚: js, css, python, xml ...)
 " https://github.com/humiaozuzu/dot-vimrc#dependencie
 " --------------------------------END------------------------------------------
 " }}}
@@ -474,7 +474,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " confirm_download 0
 " confirm_upload 0
 " ```
-" ¸ÄÒ»ÏÂ´úÂë£¬¸ü¼Ó·½±ã
+" æ”¹ä¸€ä¸‹ä»£ç ï¼Œæ›´åŠ æ–¹ä¾¿
 " $ ~/.vim/bundle/vim-hsftp/plugin/hsftp.vim
 "   ---> H_UploadFile
 " +   let prompt = printf('Upload file %s?', conf['localpath'])
@@ -510,7 +510,7 @@ set updatetime=250
 " FUNCTION {{{
 " ================================FUNCTION=====================================
 "
-" GvimÍ¸Ã÷¶ÈÉÏµ÷ {{{
+" Gvimé€æ˜åº¦ä¸Šè°ƒ {{{
 func! TransUp()
   let g:vimtweakTrans += g:vimtweakTransDelta
   let g:vimtweakTrans = (g:vimtweakTrans > 255 ? 255 : g:vimtweakTrans)
@@ -518,7 +518,7 @@ func! TransUp()
 endfunc
 " }}}
 "
-" GvimÍ¸Ã÷¶ÈÏÂµ÷ {{{
+" Gvimé€æ˜åº¦ä¸‹è°ƒ {{{
 func! TransDown()
   let g:vimtweakTrans -= g:vimtweakTransDelta
   let g:vimtweakTrans = (
@@ -529,7 +529,7 @@ func! TransDown()
 endfunc
 " }}}
 "
-" Gvim×ÜÊÇ×îÇ° {{{
+" Gvimæ€»æ˜¯æœ€å‰ {{{
 func! SetAlwaysTop()
   let g:vimtweakTopMost = (g:vimtweakTopMost ? 0 : 1)
   call libcallnr("vimtweak.dll", "EnableTopMost", g:vimtweakTopMost)
@@ -541,7 +541,7 @@ func! SetAlwaysTop()
 endfunc
 " }}}
 "
-" Gvim´°¿Ú×î´ó»¯ {{{
+" Gvimçª—å£æœ€å¤§åŒ– {{{
 func! SetMaximized()
   let g:vimtweakMaximized = (g:vimtweakMaximized ? 0 : 1)
   call libcallnr("vimtweak.dll", "EnableMaximize", g:vimtweakMaximized)
@@ -553,16 +553,16 @@ func! SetMaximized()
 endfunc
 " }}}
 "
-" ×Ô¶¯²åÈëÎÄ¼şÍ· {{{
+" è‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´ {{{
 "autocmd BufNewFile *.cpp *.[ch], *.sh, *.java exec :call SetTitle()
-" ÉèÖÃÎÄ¼şÍ·
+" è®¾ç½®æ–‡ä»¶å¤´
 func! SetTitle()
   if &filetype == 'sh'
     call setline(1,"\# ")
     call append(line("."), "\# File Name: ".expand("%"))
     call append(line(".")+1, "\# Author: fanbin")
   endif
-  " ĞÂ½¨ÎÄ¼şºó,×Ô¶¯¶¨Î»µ½ÎÄ¼şÄ©Î²
+  " æ–°å»ºæ–‡ä»¶å,è‡ªåŠ¨å®šä½åˆ°æ–‡ä»¶æœ«å°¾
   autocmd BufNewFile * normal G
 endfunc
 " }}}
