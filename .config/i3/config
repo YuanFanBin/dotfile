@@ -135,3 +135,6 @@ bar {
                 urgent_workspace $based3 $magenta $base2
         }
 }
+
+# i3-gaps
+gaps inner 5
