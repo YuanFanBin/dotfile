@@ -31,17 +31,7 @@ client.focused_inactive   $based3   $based3   $base0   $based3  $based3
 client.unfocused          $based3   $based3   $base0   $based3  $based3
 client.urgent             $based3   $magenta  $base3   $based3  $magenta
 
-
 floating_modifier $mod
-
-bindsym $mod+Return exec st -f "Liberation Mono:size=10"
-
-bindsym $mod+c kill
-
-bindsym $mod+p       exec dmenu_run -p run          -sb "$based1"  -nb "$based3" -nf "$based0" -fn Terminus-11
-bindsym $mod+Shift+p exec ~/bin/pass-autotype -sb "$magenta" -nb "$based3" -nf "$based0" -fn Terminus-11
-
-bindsym Control+$mod+l exec i3lock -c "$based3"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -92,49 +82,76 @@ bindsym $mod+Shift+u move container to workspace 7:u
 bindsym $mod+Shift+i move container to workspace 8:i
 bindsym $mod+Shift+o move container to workspace 9:o
 
-bindsym $mod+z reload
+# i3 重启 退出 重载
 bindsym $mod+Shift+x restart
 bindsym $mod+Shift+z exit
+bindsym $mod+z reload
 
+# 新建st终端
+bindsym $mod+Return exec st -f "Liberation Mono:size=10"
+
+# kill终端
+bindsym $mod+c kill
+
+# dmenu
+bindsym $mod+p exec dmenu_run -p run -sb "$based1"  -nb "$based3" -nf "$based0" -fn Terminus-11
+bindsym $mod+Shift+p exec ~/bin/pass-autotype -sb "$magenta" -nb "$based3" -nf "$based0" -fn Terminus-11
+
+# 窗口大小调整
 mode "resize" {
-        bindsym h   resize shrink width 10 px or 10 ppt
-        bindsym j   resize grow height 10 px or 10 ppt
-        bindsym k   resize shrink height 10 px or 10 ppt
-        bindsym l   resize grow width 10 px or 10 ppt
+    bindsym h   resize grow width 10 px or 10 ppt
+    bindsym j   resize shrink height 10 px or 10 ppt
+    bindsym k   resize grow height 10 px or 10 ppt
+    bindsym l   resize shrink width 10 px or 10 ppt
 
-        bindsym Return mode "default"
-        bindsym q mode "default"
-        bindsym Escape mode "default"
-        bindcode Control+34 mode "default"
+    bindsym Return mode "default"
+    bindsym q mode "default"
+    bindsym Escape mode "default"
+    bindcode Control+34 mode "default"
 }
-
 bindsym $mod+s mode "resize"
 
-bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
-bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
-bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
-bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+# i3窗口调整(i3-gaps)
+# (Airblader/i3 - Github)[https://github.com/Airblader/i3]
+gaps inner 5
 
+# 声音调节(shell)
+# bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
+# bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+# bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+# bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
+# 声音调节(GUI)
+# $ sudo pacman -S gnome-alsamixer
+# bindsym $mod+Shift+a exec "gnome-alsamixer"
+
+# 触摸板调节
+# (Touchpad Synaptics - Arch Wiki)[https://wiki.archlinux.org/index.php/Touchpad_Synaptics]
 bindsym XF86WakeUp exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
 
-bindsym XF86Display exec "arandr"
+# 显示器调节
+# (Xrandr - Arch Wiki)[https://wiki.archlinux.org/index.php/Xrandr]
+# bindsym XF86Display exec "arandr"
 
+# 锁屏
+# (meskarune/i3lock-fancy - Github)[https://github.com/meskarune/i3lock-fancy]
 bindsym $mod+a exec "lock"
-bindsym $mod+Shift+a exec "gnome-alsamixer"
 
+bindsym Control+$mod+l exec i3lock -c "$based3"
+
+# i3bar
 bar {
-        position top
-        status_command conky-wrapper
-        strip_workspace_numbers yes
-        colors {
-                statusline $based0
-                background $based3
-                focused_workspace $based3 $based3 $base3
-                inactive_workspace $based3 $based2 $base0
-                active_workspace $based3 $based2 $base3
-                urgent_workspace $based3 $magenta $base2
-        }
+    position top
+    # system monitor
+    # (brndnmtthws/conky - Github)[https://github.com/brndnmtthws/conky]
+    status_command conky-wrapper
+    strip_workspace_numbers yes
+    colors {
+        statusline $based0
+        background $based3
+        focused_workspace $based3 $based3 $base3
+        inactive_workspace $based3 $based2 $base0
+        active_workspace $based3 $based2 $base3
+        urgent_workspace $based3 $magenta $base2
+    }
 }
-
-# i3-gaps
-gaps inner 5
