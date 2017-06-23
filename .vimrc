@@ -24,6 +24,8 @@ nmap <leader>ud :Hupdir<CR>
 " NERDTree
 nmap <leader>n :let NERDTreeWinPos="left"<CR> :NERDTree<CR>
 nmap <leader>r :let NERDTreeWinPos="right"<CR> :NERDTree<CR>
+
+nmap <leader>m :colorscheme morning<CR>
 " diff
 nmap <leader>dt :diffthis<CR>
 nmap <leader>do :diffoff<CR>
@@ -149,20 +151,20 @@ nmap cM :%s/\r$//g<CR>:noh<CR>
 "
 " 其他配置 {{{
 " --------------------------------BEGIN----------------------------------------
-set writebackup            " 保存文件前建立备份,保存成功后删除备份
-set nobackup               " 设置无备份文件
-" set clipboard+=unnamed     " 共享剪切板
-set clipboard+=unnamedplus     " 共享剪切板
-set confirm                " 保存只读文件时,弹出确认
-set history=1000           " 历史记录数
-set iskeyword+=_,$,@,%,#,- " 带有如下符号单词不被换行分割
+set writebackup                 " 保存文件前建立备份,保存成功后删除备份
+set nobackup                    " 设置无备份文件
+" set clipboard+=unnamed        " 共享剪切板
+set clipboard+=unnamedplus      " 共享剪切板
+set confirm                     " 保存只读文件时,弹出确认
+set history=1000                " 历史记录数
+set iskeyword+=_,$,@,%,#,-      " 带有如下符号单词不被换行分割
 
 if version >= 603
-  set helplang=cn          " 显示中文帮助
+  set helplang=cn               " 显示中文帮助
 endif
-filetype off               " 启用文件类型侦测
-filetype plugin on         " 针对不同文件类型加载对应插件
-filetype plugin indent on  " 特定文件特定缩进
+filetype off                    " 启用文件类型侦测
+filetype plugin on              " 针对不同文件类型加载对应插件
+filetype plugin indent on       " 特定文件特定缩进
 " quickfix模式
 autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
 set rtp+=/usr/local/opt/fzf " fzf
@@ -171,12 +173,12 @@ set rtp+=/usr/local/opt/fzf " fzf
 "
 " 配色及主题 {{{
 " --------------------------------BEGIN----------------------------------------
-set background=dark         " 背景色
+set background=dark             " 背景色
 " hi Search term=bold ctermbg=5 guibg=DarkMagenta
 " hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
-colorscheme desert          " 主题颜色(desert, industry, morning, murphy)
-hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
-hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
+colorscheme desert              " 主题颜色(desert, industry, morning, murphy)
+" hi Search ctermfg=0 ctermbg=225 guibg=LightMagenta
+" hi IncSearch ctermfg=0 ctermbg=225 guibg=LightMagenta
 " fold
 hi Folded term=bold,underline ctermbg=255 guibg=LightMagenta
 " Pmenu
@@ -195,8 +197,8 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " ================================PLUGIN=======================================
 " Vundle {{{
 " --------------------------------BEGIN----------------------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible                " be iMproved, required
+filetype off                    " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim/
@@ -234,7 +236,7 @@ Plugin 'jiangmiao/auto-pairs'
 " phpcomplete
 Plugin 'shawncplus/phpcomplete.vim'
 " powerline fonts
-Plugin 'powerline/fonts'    " 需手动安装一下字体
+Plugin 'powerline/fonts'            " 需手动安装一下字体
 " vim-airline
 Plugin 'bling/vim-airline'
 " vim-json
@@ -404,24 +406,7 @@ let NERDTreeWinSize = 20     " 大小
 "
 " vimtweak {{{
 " --------------------------------BEGIN----------------------------------------
-" 功能:
-" 1.快捷键CTRL+PageUp/PageDown 改变透明度;
-" 2.CTRL+F11改变置顶状态(有置顶信息提示!);
-" 3.F11改变切换窗口最大化;
-let g:vimtweakTrans      = 255 "定义初始透明度 0~255
-let g:vimtweakTransDelta = 30 "定义每次增加/减少的透明度值 0~255
-let g:vimtweakTransMini  = 20 "定义最小的透明度 0~255
-let g:vimtweakTopMost    = 0 "定义初始是否置顶
-let g:vimtweakMaximized  = 0 "定义初始是否最大化
-
-au GUIEnter * call libcallnr("vimtweak.dll","EnableTopMost",g:vimtweakTopMost)
-au GUIEnter * call libcallnr("vimtweak.dll","SetAlpha",g:vimtweakTrans)
-au GUIEnter * call libcallnr("vimtweak.dll","EnableMaximize",g:vimtweakMaximized)
-
-map <C-PageUp>   :call TransUp()<CR>
-map <C-PageDown> :call TransDown()<CR>
-map <C-F11>      :call SetAlwaysTop()<CR>
-map <F11>        :call SetMaximized()<CR>
+" windows Gvim 透明
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -451,7 +436,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " eslint: https://github.com/eslint/eslint#global-installation-and-usage
@@ -510,61 +495,5 @@ set updatetime=250
 " FUNCTION {{{
 " ================================FUNCTION=====================================
 "
-" Gvim透明度上调 {{{
-func! TransUp()
-  let g:vimtweakTrans += g:vimtweakTransDelta
-  let g:vimtweakTrans = (g:vimtweakTrans > 255 ? 255 : g:vimtweakTrans)
-  call libcallnr("vimtweak.dll", "SetAlpha", g:vimtweakTrans)
-endfunc
-" }}}
-"
-" Gvim透明度下调 {{{
-func! TransDown()
-  let g:vimtweakTrans -= g:vimtweakTransDelta
-  let g:vimtweakTrans = (
-    g:vimtweakTrans < g:vimtweakTransMini ?
-    g:vimtweakTransMini : g:vimtweakTrans
-  )
-  call libcallnr("vimtweak.dll", "SetAlpha", g:vimtweakTrans)
-endfunc
-" }}}
-"
-" Gvim总是最前 {{{
-func! SetAlwaysTop()
-  let g:vimtweakTopMost = (g:vimtweakTopMost ? 0 : 1)
-  call libcallnr("vimtweak.dll", "EnableTopMost", g:vimtweakTopMost)
-  if g:vimtweakTopMost == 1
-    exec "echo \"Always Top.\""
-  else
-    exec "echo \"Cancel Always Top.\""
-  endif
-endfunc
-" }}}
-"
-" Gvim窗口最大化 {{{
-func! SetMaximized()
-  let g:vimtweakMaximized = (g:vimtweakMaximized ? 0 : 1)
-  call libcallnr("vimtweak.dll", "EnableMaximize", g:vimtweakMaximized)
-  if g:vimtweakMaximized == 1
-    exec "echo \"The Maximum.\""
-  else
-    exec "echo \"Cancel The Maximization.\""
-  endif
-endfunc
-" }}}
-"
-" 自动插入文件头 {{{
-"autocmd BufNewFile *.cpp *.[ch], *.sh, *.java exec :call SetTitle()
-" 设置文件头
-func! SetTitle()
-  if &filetype == 'sh'
-    call setline(1,"\# ")
-    call append(line("."), "\# File Name: ".expand("%"))
-    call append(line(".")+1, "\# Author: fanbin")
-  endif
-  " 新建文件后,自动定位到文件末尾
-  autocmd BufNewFile * normal G
-endfunc
-" }}}
 " ================================FUNCTION=====================================
 " }}}
