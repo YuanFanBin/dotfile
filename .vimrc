@@ -1,6 +1,7 @@
 " vim:fdm=marker
 "
 set mouse=a
+
 " leader 键配置 {{{
 " --------------------------------BEGIN----------------------------------------
 let mapleader = " "
@@ -39,21 +40,18 @@ nmap <leader>= :vertical resize 86<CR> " 6: numberwidth + git icon width
 " 
 " autocmd {{{
 " --------------------------------BEGIN----------------------------------------
+autocmd BufWritePre *.* set fenc=utf-8
 autocmd FileType js,vue set tabstop=2
 autocmd FileType js,vue set shiftwidth=2
+autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " --------------------------------END------------------------------------------
 " }}}
 "
-" 判断操作系统、终端 or Gvim {{{
+" Golang {{{
 " --------------------------------BEGIN----------------------------------------
-" Windows or Linux
-let g:isWindows = 0
-let g:isLinux = 1
-if (has("win32") || has("win64") || has("win95") || has("win16"))
-  let g:isWindows = 1
-else
-  let g:isLinux = 1
-endif
+" [1]: Plugin 'fatih/vim-go'
+" [2]: :GoInstallBinares
+autocmd BufWritePre *.go :GoImports
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -76,15 +74,8 @@ set nocompatible
 " 禁用vi兼容模式，避免以前版本BUG和局限性
 " 逐步检查，探测文件编码格式，以正确格式打开
 set fencs=utf-8,ucs-bom,gbk,shift-jis,gb18030,gb2312,cp936,latin-1
-"if g:isWindows
-"  set encoding=gbk " 设置默认编码格式
-"  set fenc=gbk " 设置当前使用和保存的编码格式
-"endif
-
-"if g:isLinux
-  set encoding=utf-8
-  set fenc=utf-8
-"endif
+set encoding=utf-8
+set fenc=utf-8
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -110,7 +101,7 @@ set nu                          " 行号
 set backspace=eol,start,indent  " backspace
 set whichwrap+=<,>,h,l
 set cursorline                  " 突出显示当前行
-"set cursorcolumn               " 突出显示当前列
+" set cursorcolumn               " 突出显示当前列
 
 set matchtime=1                 " 匹配括号高亮时间(单位0.1 sec)
 set showmatch                   " 高亮显示匹配的括号
@@ -140,7 +131,6 @@ endif
 " map <C-A> ggVGY
 " 删除空行
 map <F2> :g/^\s*$/d<CR>
-
 " 键入cS清除行尾空格-clear space
 nmap cS :%s/\s\+$//g<CR>:noh<CR>
 " 键入cM清除行尾^M-clear ^M
@@ -186,13 +176,6 @@ hi PmenuSel term=underline cterm=underline gui=underline ctermbg=81 guibg=LightB
 " --------------------------------END------------------------------------------
 " }}}
 "
-" 自动加载 {{{
-" --------------------------------BEGIN----------------------------------------
-" javascript settings
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-" --------------------------------END------------------------------------------
-" }}}
-"
 " PLUGIN {{{
 " ================================PLUGIN=======================================
 " Vundle {{{
@@ -204,76 +187,40 @@ filetype off                    " required
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" vim-commentary 快捷注释(`gc`) 支持 `:Visual`
-Plugin 'tpope/vim-commentary'
-" vim-surround
+Plugin 'tpope/vim-commentary'           " vim-commentary 快捷注释(`gc`) 支持 `:Visual`
 Plugin 'tpope/vim-surround'
-" L9
 Plugin 'L9'
-" sparkup
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" install nerdtree
 Plugin 'scrooloose/nerdtree'
-" emment
 " Plugin 'emmetio/emmet'
 Plugin 'mattn/emmet-vim'
-" html5
 Plugin 'othree/html5.vim'
-" tagbar
 Plugin 'majutsushi/tagbar'
-" neocomplacche
 Plugin 'shougo/neocomplcache.vim'
-" auto-pairs
 Plugin 'jiangmiao/auto-pairs'
-" phpcomplete
 Plugin 'shawncplus/phpcomplete.vim'
-" powerline fonts
-Plugin 'powerline/fonts'            " 需手动安装一下字体
-" vim-airline
+Plugin 'powerline/fonts'                " 需手动安装一下字体
 Plugin 'bling/vim-airline'
-" vim-json
 Plugin 'elzr/vim-json'
-" vim-go
 Plugin 'fatih/vim-go'
-" tabular
 Plugin 'godlygeek/tabular'
-" php.vim
 Plugin 'stanangeloff/php.vim'
-" ctrlp 模糊搜索
-" Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" syntastic 语法检查
-Plugin 'scrooloose/syntastic'
-" vim-gitgutter git修改提示
-Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'           " syntastic 语法检查
+Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
 " ycm
 " Plugin 'valloric/youcompleteme'
-" ack 项目词搜索( install 'ack' command )
-Plugin 'mileszs/ack.vim'
-" 快速跳转
-Plugin 'easymotion/vim-easymotion'
-" 多光标操作
-Plugin 'terryma/vim-multiple-cursors'
-" sftp 上传下载文件
-Plugin 'hesselbom/vim-hsftp'
-"
+Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
+Plugin 'easymotion/vim-easymotion'      " 快速跳转
+Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
+Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
 Plugin 'tpope/vim-dispatch'
-" Vue.js syntastic
-" Plugin 'posva/vim-vue'
-" Vue.js syntax
-Plugin 'darthmall/vim-vue'
-" ranbow
-Plugin 'luochen1990/rainbow'
+Plugin 'darthmall/vim-vue'              " Vue.js syntax
+Plugin 'luochen1990/rainbow'            " ranbow
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -323,7 +270,6 @@ let g:html5_event_handler_attributes_complete = 1
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 auto VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <silent> <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " --------------------------------END------------------------------------------
 " }}}
@@ -490,10 +436,4 @@ set updatetime=250
 " --------------------------------END------------------------------------------
 " }}}
 " ================================PLUGIN=======================================
-" }}}
-"
-" FUNCTION {{{
-" ================================FUNCTION=====================================
-"
-" ================================FUNCTION=====================================
 " }}}
