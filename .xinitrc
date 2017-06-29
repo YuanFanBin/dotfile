@@ -48,10 +48,16 @@ unclutter -root -visible &
 # [Auto Mount]
 udiskie &
 
+# [Terminal Pinyin]
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 # [Reference]
 # * [Xmodmap - Arch Wiki](https://wiki.archlinux.org/index.php/Xmodmap)
 # * [Unclutter - Arch Wiki](https://wiki.archlinux.org/index.php/Unclutter)
 # * [Udisks - Arch Wiki](https://wiki.archlinux.org/index.php/Udisks) 
+# * [Fcitx - Arch Wiki](https://wiki.archlinux.org/index.php/Fcitx)
 #-----------------------------------------------------------------------------#
 
 
