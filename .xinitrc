@@ -28,6 +28,11 @@ fi
 
 
 #-----------------------------------------------------------------------------#
+# [Terminal Pinyin]
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 # [Keyboard]
 # system .Xmodmap
 sysmodmap=/etc/X11/xinit/.Xmodmap
@@ -48,10 +53,11 @@ unclutter -root -visible &
 # [Auto Mount]
 udiskie &
 
-# [Terminal Pinyin]
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+# [输入法]
+fcitx &
+
+# [composite manager]
+xcompmgr &
 
 # [Reference]
 # * [Xmodmap - Arch Wiki](https://wiki.archlinux.org/index.php/Xmodmap)
