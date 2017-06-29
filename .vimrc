@@ -35,6 +35,8 @@ nmap <leader>ucp :set fo=r<CR>
 " set width
 nmap <leader>- :vertical resize 84<CR> " 4: numberwidth
 nmap <leader>= :vertical resize 86<CR> " 6: numberwidth + git icon width
+" quickfix window
+nmap <leader>c :cclose<CR>
 " --------------------------------END------------------------------------------
 "  }}}
 " 
@@ -51,7 +53,9 @@ autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " --------------------------------BEGIN----------------------------------------
 " [1]: Plugin 'fatih/vim-go'
 " [2]: :GoInstallBinares
+" autocmd BufWritePre *.go :cclose
 autocmd BufWritePre *.go :GoImports
+autocmd BufWritePre *.go :GoErrCheck -abspath
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -209,7 +213,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'stanangeloff/php.vim'
 " Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'scrooloose/syntastic'           " syntastic 语法检查
+" Plugin 'scrooloose/syntastic'           " syntastic 语法检查
+Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
 " ycm
 " Plugin 'valloric/youcompleteme'
@@ -382,7 +387,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " eslint: https://github.com/eslint/eslint#global-installation-and-usage
