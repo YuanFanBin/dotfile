@@ -25,7 +25,6 @@ set $blue      #268bd2
 set $cyan      #2aa198
 set $green     #859900
 
-
 client.focused            $based3   $based2   $base3   $based3  $based2
 client.focused_inactive   $based3   $based3   $base0   $based3  $based3
 client.unfocused          $based3   $based3   $base0   $based3  $based3
@@ -87,8 +86,10 @@ bindsym $mod+Shift+x restart
 bindsym $mod+Shift+z exit
 bindsym $mod+z reload
 
-# 新建st终端
+# [st终端] 新建
 bindsym $mod+Return exec st -f "Liberation Mono:size=10"
+# [st终端] 透明
+bindsym $mod+Escape exec transset-df -a
 
 # kill终端
 bindsym $mod+c kill
