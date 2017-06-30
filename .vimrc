@@ -215,7 +215,6 @@ hi PmenuSel term=underline cterm=underline gui=underline ctermbg=81 guibg=LightB
 "
 " PLUGIN {{{
 " ================================PLUGIN=======================================
-" Vundle {{{
 " --------------------------------BEGIN----------------------------------------
 set nocompatible                " be iMproved, required
 filetype off                    " required
@@ -256,7 +255,7 @@ Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
 Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
 Plugin 'tpope/vim-dispatch'
 Plugin 'darthmall/vim-vue'              " Vue.js syntax
-Plugin 'luochen1990/rainbow'            " ranbow
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -274,7 +273,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " --------------------------------END------------------------------------------
-" }}}
 "
 " vim-vue {{{
 " --------------------------------BEGIN----------------------------------------
@@ -469,6 +467,13 @@ let g:syntastic_javascript_checkers = ['eslint']
 " --------------------------------BEGIN----------------------------------------
 set updatetime=250
 " --------------------------------END------------------------------------------
+" }}}
+"
+" kien/rainbow_parentheses.vim {{{
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 " }}}
 " ================================PLUGIN=======================================
 " }}}
