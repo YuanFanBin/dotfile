@@ -1,4 +1,7 @@
 " vim:fdm=marker
+" Copyright: Copyright (C) 2013-2017 YuanFanBin
+" License: The MIT License
+" Email: yuanfanbin@gmail.com
 "
 "------------------------------------------
 " My Keyboard Layout
@@ -45,7 +48,7 @@ nmap <LEADER>d :cs find g <CWORD><CR>       " 查找定义
 nmap <LEADER>s :cs find s <CWORD><CR>       " 查找symbol
 nmap <LEADER>c :cs find c <CWORD><CR>       " 查找calling
 " colorscheme
-nmap <LEADER>m :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR>
+nmap <LEADER>cs :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR>
 " diff
 nmap <LEADER>dt :diffthis<CR>
 nmap <LEADER>do :diffoff<CR>
@@ -65,8 +68,26 @@ nmap <LEADER>r :let NERDTreeWinPos="right"<CR> :NERDTree<CR>
 " Tagbar
 nmap <LEADER>b :Tagbar<CR>
 " --------------------------------------
+" --------------------------------------
+"  [Golang]
+nmap <LEADER>m :GoDoc<CR>
+" --------------------------------------
 " --------------------------------END------------------------------------------
 "  }}}
+"
+"  键盘映射 {{{
+" --------------------------------BEGIN----------------------------------------
+" CTRL+A 全选复制
+" map <C-A> ggVGY
+" 删除空行
+map <F2> :g/^\s*$/d<CR>
+" 键入cS清除行尾空格-clear space
+nmap cS :%s/\s\+$//g<CR>:noh<CR>
+" 键入cM清除行尾^M-clear ^M
+nmap cM :%s/\r$//g<CR>:noh<CR>
+"autocmd vimenter * copen 5
+" --------------------------------END------------------------------------------
+" }}}
 " 
 " autocmd {{{
 " --------------------------------BEGIN----------------------------------------
@@ -74,15 +95,14 @@ autocmd BufWritePre *.* set fenc=utf-8
 autocmd FileType js,vue set tabstop=2
 autocmd FileType js,vue set shiftwidth=2
 autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-" --------------------------------END------------------------------------------
-" }}}
-"
-" Golang {{{
-" --------------------------------BEGIN----------------------------------------
+" Golang
+" -------------------------------------
 " [1]: Plugin 'fatih/vim-go'
 " [2]: :GoInstallBinares
 autocmd BufWritePre *.go :GoImports
 autocmd BufWritePre *.go :GoErrCheck -abspath
+autocmd BufRead *.* :cscope add ./cscope.out
+" --------------------------------------
 " --------------------------------END------------------------------------------
 " }}}
 "
@@ -153,20 +173,6 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-" --------------------------------END------------------------------------------
-" }}}
-"
-"  键盘映射 {{{
-" --------------------------------BEGIN----------------------------------------
-" CTRL+A 全选复制
-" map <C-A> ggVGY
-" 删除空行
-map <F2> :g/^\s*$/d<CR>
-" 键入cS清除行尾空格-clear space
-nmap cS :%s/\s\+$//g<CR>:noh<CR>
-" 键入cM清除行尾^M-clear ^M
-nmap cM :%s/\r$//g<CR>:noh<CR>
-"autocmd vimenter * copen 5
 " --------------------------------END------------------------------------------
 " }}}
 "
