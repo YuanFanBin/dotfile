@@ -45,7 +45,7 @@ nmap <LEADER>d :cs find g <CWORD><CR>       " 查找定义
 nmap <LEADER>s :cs find s <CWORD><CR>       " 查找symbol
 nmap <LEADER>c :cs find c <CWORD><CR>       " 查找calling
 " colorscheme
-nmap <LEADER>m :colorscheme morning<CR>
+nmap <LEADER>m :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR>
 " diff
 nmap <LEADER>dt :diffthis<CR>
 nmap <LEADER>do :diffoff<CR>
@@ -194,7 +194,7 @@ set rtp+=/usr/local/opt/fzf " fzf
 "
 " 配色及主题 {{{
 " --------------------------------BEGIN----------------------------------------
-set background=dark             " 背景色
+" set background=dark             " 背景色
 " hi Search term=bold ctermbg=5 guibg=DarkMagenta
 " hi IncSearch term=bold ctermbg=5 guibg=DarkMagenta
 colorscheme desert              " 主题颜色(desert, industry, morning, murphy)
@@ -229,7 +229,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'othree/html5.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'shougo/neocomplcache.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'powerline/fonts'                " 需手动安装一下字体
 Plugin 'bling/vim-airline'
@@ -243,7 +242,8 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
 " Plugin 'valloric/youcompleteme'         " ycm
-Plugin 'shawncplus/phpcomplete.vim'
+" Plugin 'shawncplus/phpcomplete.vim'
+" Plugin 'shougo/neocomplcache.vim'
 Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
 Plugin 'easymotion/vim-easymotion'      " 快速跳转
 Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
