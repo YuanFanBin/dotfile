@@ -1,42 +1,70 @@
 " vim:fdm=marker
 "
-set mouse=a
+"------------------------------------------
+" My Keyboard Layout
+"------------------------------------------
+" [NORMAL]
+"------------------------------------------
+" __ESC__ 1 2 3 4 5 6 7 8 9 0 - = BACKSPACE
+" __TAB___ q w e r t y u i o p [ ] ___\____
+" CAPSLOCK_ a s d f g h j k l ; ' __ENTER__
+" __SHIFT__  z x c v b n m , . / ___SHIFT__
+" CTRL WIN ALT ____SPACE____ ALT FN PN CTRL
+"------------------------------------------
+" [SHIFT + ]
+"------------------------------------------
+" __ESC__ ! @ # $ % ^ & * ( ) _ + BACKSPACE
+" __TAB___ Q W E R T Y U I O P { } ___|____
+" CAPSLOCK_ A S D F G H J K L : " __ENTER__
+" __SHIFT__  Z X C V B N M < > ? ___SHIFT__
+" CTRL WIN AL ____SPACE____ ALT FN PN CTRL
+"------------------------------------------
 
-" leader 键配置 {{{
+" LEADER 键配置 {{{
 " --------------------------------BEGIN----------------------------------------
 let mapleader = " "
-nmap <leader>w :w<CR>
-nmap <leader>q :q<CR>
-nmap <leader>h <C-W>h
-nmap <leader>j <C-W>j
-nmap <leader>k <C-W>k
-nmap <leader>l <C-W>l
-nmap <leader>t :tabnew .<CR>
-nmap <leader>> <C-W>5>
-nmap <leader>< <C-W>5<
-" ack.vim
-nmap <leader>s :Ack<CR>
-nmap <leader>a :Ack 
-" foldmethod
-nmap <leader>f :FZF<CR>
-" vim-hsftp
-nmap <leader>uf :Hupload<CR>
-nmap <leader>ud :Hupdir<CR>
-" NERDTree
-nmap <leader>n :let NERDTreeWinPos="left"<CR> :NERDTree<CR>
-nmap <leader>r :let NERDTreeWinPos="right"<CR> :NERDTree<CR>
-
-nmap <leader>m :colorscheme morning<CR>
+" --------------------------------------
+"  [Layout Operator]
+nmap <LEADER>w :w<CR>
+nmap <LEADER>q :q<CR>
+nmap <LEADER>h <C-W>h
+nmap <LEADER>j <C-W>j
+nmap <LEADER>k <C-W>k
+nmap <LEADER>l <C-W>l
+nmap <LEADER>t :tabnew .<CR>
+nmap <LEADER>> <C-W>5>
+nmap <LEADER>< <C-W>5<
+" --------------------------------------
+"  [Command Operator]
+" ack.vim: 利用 ack 命令搜索字符串，结果呈现在 quickfix window 中
+nmap <LEADER>a :Ack<CR>
+" 利用 fzf 命令搜索项目文件(类似 CTRL+P 插件功能)
+nmap <LEADER>f :FZF<CR>
+" cscope
+nmap <LEADER>d :cs find g <CWORD><CR>       " 查找定义
+nmap <LEADER>s :cs find s <CWORD><CR>       " 查找symbol
+nmap <LEADER>c :cs find c <CWORD><CR>       " 查找calling
+" colorscheme
+nmap <LEADER>m :colorscheme morning<CR>
 " diff
-nmap <leader>dt :diffthis<CR>
-nmap <leader>do :diffoff<CR>
-nmap <leader>cp :set fo-=r<CR>
-nmap <leader>ucp :set fo=r<CR>
+nmap <LEADER>dt :diffthis<CR>
+nmap <LEADER>do :diffoff<CR>
+nmap <LEADER>cp :set fo-=r<CR>
+nmap <LEADER>ucp :set fo=r<CR>
 " set width
-nmap <leader>- :vertical resize 84<CR> " 4: numberwidth
-nmap <leader>= :vertical resize 86<CR> " 6: numberwidth + git icon width
-" quickfix window
-nmap <leader>c :cclose<CR>
+nmap <LEADER>- :vertical resize 84<CR> " 4: numberwidth
+nmap <LEADER>= :vertical resize 86<CR> " 6: numberwidth + git icon width
+" --------------------------------------
+"  [Plugin Operator]
+" vim-hsftp
+nmap <LEADER>uf :Hupload<CR>
+nmap <LEADER>ud :Hupdir<CR>
+" NERDTree
+nmap <LEADER>n :let NERDTreeWinPos="left"<CR> :NERDTree<CR>
+nmap <LEADER>r :let NERDTreeWinPos="right"<CR> :NERDTree<CR>
+" Tagbar
+nmap <LEADER>b :Tagbar<CR>
+" --------------------------------------
 " --------------------------------END------------------------------------------
 "  }}}
 " 
@@ -53,7 +81,6 @@ autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 " --------------------------------BEGIN----------------------------------------
 " [1]: Plugin 'fatih/vim-go'
 " [2]: :GoInstallBinares
-" autocmd BufWritePre *.go :cclose
 autocmd BufWritePre *.go :GoImports
 autocmd BufWritePre *.go :GoErrCheck -abspath
 " --------------------------------END------------------------------------------
@@ -86,6 +113,7 @@ set fenc=utf-8
 " 默认配置 {{{
 " --------------------------------BEGIN----------------------------------------
 syntax on                       " 语法高亮
+set mouse=a
 set backspace=2                 " 使backspace正常处理indent，eol，start等
 set smartindent                 " 启用智能缩进
 set autoindent                  " 自动缩进
@@ -118,9 +146,8 @@ set fillchars=vert:\ ,stl:\ ,stlnc:\  " 在被分割的窗口间显示空白，�
 set laststatus=2 " 启用状态栏信息 [1]启动显示 [2]总是显示
 set ruler        " 显示标尺
 set showcmd      " 显示键入命令
-set cmdheight=2  " 设置命令行高度为2,默认1
+set cmdheight=1  " 设置命令行高度为1,默认1
 set wildmenu     " 增强模式下命令行Tab
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}  " 状态行显示的内容
 if exists('+colorcolumn')
     set colorcolumn=80
 else
@@ -160,7 +187,7 @@ filetype off                    " 启用文件类型侦测
 filetype plugin on              " 针对不同文件类型加载对应插件
 filetype plugin indent on       " 特定文件特定缩进
 " quickfix模式
-autocmd FileType c,cpp map <buffer><leader><space> :w<cr>:make<cr>
+autocmd FileType c,cpp map <buffer><LEADER><space> :w<cr>:make<cr>
 set rtp+=/usr/local/opt/fzf " fzf
 " --------------------------------END------------------------------------------
 " }}}
@@ -204,7 +231,6 @@ Plugin 'othree/html5.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'shougo/neocomplcache.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'powerline/fonts'                " 需手动安装一下字体
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
@@ -216,8 +242,8 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'scrooloose/syntastic'           " syntastic 语法检查
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
-" ycm
-" Plugin 'valloric/youcompleteme'
+" Plugin 'valloric/youcompleteme'         " ycm
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
 Plugin 'easymotion/vim-easymotion'      " 快速跳转
 Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
@@ -375,8 +401,6 @@ let Tlist_File_Fold_Auto_Close = 0      " 不要关闭其他文件的tags
 let Tlist_Enable_Fold_Column   = 0      " 不要显示折叠树
 " 使用:TlistToggle打开Taglist时，输入焦点在Taglist
 let Tlist_GainFocus_On_ToggleOpen   = 0
-" 打开和关闭Taglist
-nmap <silent> <F9> :TlistToggle<CR>
 " --------------------------------END------------------------------------------
 " }}}
 "
