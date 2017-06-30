@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Copyright: Copyright (C) 2013-2017 YuanFanBin
+# License: The MIT License
+# Email: yuanfanbin@gmail.com
+
 #-----------------------------------------------------------------------------#
 # cp /etc/X11/xinit/xinitrc
 # [Reference]
