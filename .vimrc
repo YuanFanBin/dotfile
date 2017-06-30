@@ -44,9 +44,9 @@ nmap <LEADER>a :Ack<CR>
 " 利用 fzf 命令搜索项目文件(类似 CTRL+P 插件功能)
 nmap <LEADER>f :FZF<CR>
 " cscope
-nmap <LEADER>d :cs find g <CWORD><CR>       " 查找定义
-nmap <LEADER>s :cs find s <CWORD><CR>       " 查找symbol
-nmap <LEADER>c :cs find c <CWORD><CR>       " 查找calling
+nmap <LEADER>d :cs find g <cword><CR>       " 查找定义
+nmap <LEADER>s :cs find s <cword><CR>       " 查找symbol
+nmap <LEADER>c :cs find c <cword><CR>       " 查找calling
 " colorscheme
 nmap <LEADER>cs :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR>
 " diff
