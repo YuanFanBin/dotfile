@@ -48,7 +48,7 @@ nmap <LEADER>d :cs find g <cword><CR>       " 查找定义
 nmap <LEADER>s :cs find s <cword><CR>       " 查找symbol
 nmap <LEADER>c :cs find c <cword><CR>       " 查找calling
 " colorscheme
-nmap <LEADER>cs :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR>
+nmap <LEADER>cs :colorscheme morning<CR> :hi Pmenu ctermfg=0 ctermbg=100 guibg=LightMagenta<CR> :RainbowParenthesesActivate<CR>
 " diff
 nmap <LEADER>dt :diffthis<CR>
 nmap <LEADER>do :diffoff<CR>
