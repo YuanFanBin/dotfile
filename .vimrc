@@ -55,8 +55,8 @@ nmap <LEADER>do :diffoff<CR>
 nmap <LEADER>cp :set fo-=r<CR>
 nmap <LEADER>ucp :set fo=r<CR>
 " set width
-nmap <LEADER>- :vertical resize 84<CR> " 4: numberwidth
-nmap <LEADER>= :vertical resize 86<CR> " 6: numberwidth + git icon width
+nmap <LEADER>- :vert resize 84<CR> " 4: numberwidth
+nmap <LEADER>= :vert resize 86<CR> " 6: numberwidth + git icon width
 " --------------------------------------
 "  [Plugin Operator]
 " vim-hsftp
@@ -71,6 +71,24 @@ nmap <LEADER>b :Tagbar<CR>
 " --------------------------------------
 "  [Golang]
 nmap <LEADER>m :GoDoc<CR>
+
+"  [Python] PEP8
+au BufRead,BufNewFile *.py
+    \ set tabstop=4     |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4  |
+    \ set textwidth=79  |
+    \ set expandtab     |
+    \ set autoindent    |
+    \ set fileformat=unix
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
+au BufWrite *.py exec '%s/\s\+$//g'         " 替换尾部空格及TAB
+
+"  [JavaScript, HTML, CSS]
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2     |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
 " --------------------------------------
 " --------------------------------END------------------------------------------
 "  }}}
@@ -180,8 +198,8 @@ endif
 " --------------------------------BEGIN----------------------------------------
 set writebackup                 " 保存文件前建立备份,保存成功后删除备份
 set nobackup                    " 设置无备份文件
-" set clipboard+=unnamed        " 共享剪切板
-set clipboard+=unnamedplus      " 共享剪切板
+" set clipboard+=unnamed        " 共享剪切板(MacOS)
+set clipboard+=unnamedplus      " 共享剪切板(Arch)
 set confirm                     " 保存只读文件时,弹出确认
 set history=1000                " 历史记录数
 set iskeyword+=_,$,@,%,#,-      " 带有如下符号单词不被换行分割
@@ -256,6 +274,7 @@ Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
 Plugin 'tpope/vim-dispatch'
 Plugin 'darthmall/vim-vue'              " Vue.js syntax
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'nvie/vim-flake8'                " EPE8
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -303,9 +322,10 @@ let g:html5_event_handler_attributes_complete = 1
 " nerdtree settings {{{
 " --------------------------------BEGIN----------------------------------------
 " autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-auto VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+au StdinReadPre * let s:std_in=1
+au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeIgnore=['\.pyc$', '\~$']        "ignore files in NERDTree
 " --------------------------------END------------------------------------------
 " }}}
 "
