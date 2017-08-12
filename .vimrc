@@ -23,7 +23,7 @@
 " CTRL WIN AL ____SPACE____ ALT FN PN CTRL
 "------------------------------------------
 
-" LEADER 键配置 {{{
+" LEADER 键配置
 " --------------------------------BEGIN----------------------------------------
 let mapleader = " "
 " --------------------------------------
@@ -72,28 +72,13 @@ nmap <LEADER>b :Tagbar<CR>
 "  [Golang]
 nmap <LEADER>m :GoDoc<CR>
 
-"  [Python] PEP8
-au BufRead,BufNewFile *.py
-    \ set tabstop=4     |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4  |
-    \ set textwidth=79  |
-    \ set expandtab     |
-    \ set autoindent    |
-    \ set fileformat=unix
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
-au BufWrite *.py exec '%s/\s\+$//g'         " 替换尾部空格及TAB
+au BufWrite *.py *.md *.vimrc exec '%s/\s\+$//g'         " 替换尾部空格及TAB
 
-"  [JavaScript, HTML, CSS]
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2     |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
 " --------------------------------------
 " --------------------------------END------------------------------------------
-"  }}}
 "
-"  键盘映射 {{{
+"
+"  键盘映射 
 " --------------------------------BEGIN----------------------------------------
 " CTRL+A 全选复制
 " map <C-A> ggVGY
@@ -105,26 +90,66 @@ nmap cS :%s/\s\+$//g<CR>:noh<CR>
 nmap cM :%s/\r$//g<CR>:noh<CR>
 "autocmd vimenter * copen 5
 " --------------------------------END------------------------------------------
-" }}}
+"
 " 
-" autocmd {{{
+" autocmd
 " --------------------------------BEGIN----------------------------------------
-autocmd BufWritePre *.* set fenc=utf-8
-autocmd FileType js,vue set tabstop=2
-autocmd FileType js,vue set shiftwidth=2
-autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-" Golang
+" [autocmd -> *]
+" -------------------------------------
+au BufRead,BufNewFile,BufEnter * cd %:p:h " 自动切换目录为当前编辑文件所在目录
+au BufWritePre *.* set fenc=utf-8         " UTF-8
+" -------------------------------------
+
+"  [autocmd -> JavaScript, HTML, CSS]
+" -------------------------------------
+au BufNewFile,BufRead *.js, *.html, *.css *.vue
+    \ set tabstop=2     |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+" -------------------------------------
+
+" [autocmd -> Golang]
 " -------------------------------------
 " [1]: Plugin 'fatih/vim-go'
 " [2]: :GoInstallBinares
-autocmd BufWritePre *.go :GoImports
-autocmd BufWritePre *.go :GoErrCheck -abspath
-autocmd BufRead *.* :cscope add ./cscope.out
+au BufWritePre *.go :GoImports
+au BufWritePre *.go :GoErrCheck -abspath
+" -------------------------------------
+
+" [autocmd -> Python - PEP8]
+" -------------------------------------
+au BufRead,BufNewFile *.py
+    \ set tabstop=4     |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4  |
+    \ set textwidth=79  |
+    \ set expandtab     |
+    \ set autoindent    |
+    \ set fileformat=unix
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
+" -------------------------------------
+
+" [SHELL :cscope]
+if has("cscope")
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set cscopetag                   " Ctrl+], Ctrl+t 跳转
+    set csto=0                      " 是否反向搜索
+    if filereadable("cscope.out")   " 在当前目录中添加任何数据库
+        cs add cscope.out
+    elseif $CSCOPE_DB != ""         " 否则添加数据库环境中所指出的
+        cs add $CSCOPE_DB
+    endif
+    set cscopeverbose
+endif
+
+" [SHELL: tags]
+set tags=./tags
 " --------------------------------------
 " --------------------------------END------------------------------------------
-" }}}
 "
-" 针对Gvim处理图形界面 {{{
+"
+" 针对Gvim处理图形界面
 " --------------------------------BEGIN----------------------------------------
 set go=                     " 不要图形按钮
 "set guioptions-=m          " 菜单
@@ -135,9 +160,9 @@ set guioptions+=r           " 滚动条
 " winpos 300 80             " 窗口出现位置
 set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI " 设置字体（需安装）
 " --------------------------------END------------------------------------------
-" }}}
 "
-" 字体及编码解码设置 {{{
+"
+" 字体及编码解码设置
 " --------------------------------BEGIN----------------------------------------
 set nocompatible
 " 禁用vi兼容模式，避免以前版本BUG和局限性
@@ -146,40 +171,41 @@ set fencs=utf-8,ucs-bom,gbk,shift-jis,gb18030,gb2312,cp936,latin-1
 set encoding=utf-8
 set fenc=utf-8
 " --------------------------------END------------------------------------------
-" }}}
 "
-" 默认配置 {{{
+"
+" 默认配置
 " --------------------------------BEGIN----------------------------------------
-syntax on                       " 语法高亮
+syntax on                             " 语法高亮
 set mouse=a
-set backspace=2                 " 使backspace正常处理indent，eol，start等
-set smartindent                 " 启用智能缩进
-set autoindent                  " 自动缩进
+set backspace=2                       " 使backspace正常处理indent，eol，start等
+set smartindent                       " 启用智能缩进
+set autoindent                        " 自动缩进
 set cindent
-set tabstop=4                   " 设置TAB键宽度
-set expandtab                   " 将tab的\t装换成空格(noexpandtab)
-set shiftwidth=4                " 换行时自动缩进2个空格
-set smarttab                    " 在行和段开始处使用制表符
-set autoread                    " 当文件在外部修改时自动更新
-set autowrite                   " 自动保存
-set ignorecase                  " 搜索忽略大小写
-set hlsearch                    " 搜索高亮(nohlsearch)
-set incsearch                   " 搜索逐字符高亮
-set magic                       " 设置魔术 与正则表达式有关
-set completeopt=longest,menu    " 代码补全
-set nu                          " 行号
-set backspace=eol,start,indent  " backspace
+set tabstop=4                         " 设置TAB键宽度
+set expandtab                         " 将tab的\t装换成空格(noexpandtab)
+set shiftwidth=4                      " 换行时自动缩进2个空格
+set smarttab                          " 在行和段开始处使用制表符
+set autoread                          " 当文件在外部修改时自动更新
+set autowrite                         " 自动保存
+set ignorecase                        " 搜索忽略大小写
+set hlsearch                          " 搜索高亮(nohlsearch)
+set incsearch                         " 搜索逐字符高亮
+set magic                             " 设置魔术 与正则表达式有关
+set completeopt=longest,menu          " 代码补全
+set nu                                " 行号
+set backspace=eol,start,indent        " backspace
 set whichwrap+=<,>,h,l
-set cursorline                  " 突出显示当前行
-" set cursorcolumn               " 突出显示当前列
-
-set matchtime=1                 " 匹配括号高亮时间(单位0.1 sec)
-set showmatch                   " 高亮显示匹配的括号
+set cursorline                        " 突出显示当前行
+" set cursorcolumn                    " 突出显示当前列
+set matchtime=1                       " 匹配括号高亮时间(单位0.1 sec)
+set showmatch                         " 高亮显示匹配的括号
 set fillchars=vert:\ ,stl:\ ,stlnc:\  " 在被分割的窗口间显示空白，便于阅读
+set fileformats=unix,dos,mac          " 给出文件的<EOL>格式类型"
+set fileformat=unix                   " 设置新（当前）文件的<EOL>格式
 " --------------------------------END------------------------------------------
-" }}}
 "
-"  状态栏配置 {{{
+"
+"  状态栏配置
 " --------------------------------BEGIN----------------------------------------
 set laststatus=2 " 启用状态栏信息 [1]启动显示 [2]总是显示
 set ruler        " 显示标尺
@@ -192,9 +218,9 @@ else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 " --------------------------------END------------------------------------------
-" }}}
 "
-" 其他配置 {{{
+"
+" 其他配置
 " --------------------------------BEGIN----------------------------------------
 set writebackup                 " 保存文件前建立备份,保存成功后删除备份
 set nobackup                    " 设置无备份文件
@@ -214,9 +240,9 @@ filetype plugin indent on       " 特定文件特定缩进
 autocmd FileType c,cpp map <buffer><LEADER><space> :w<cr>:make<cr>
 set rtp+=/usr/local/opt/fzf " fzf
 " --------------------------------END------------------------------------------
-" }}}
 "
-" 配色及主题 {{{
+"
+" 配色及主题
 " --------------------------------BEGIN----------------------------------------
 " set background=dark             " 背景色
 " hi Search term=bold ctermbg=5 guibg=DarkMagenta
@@ -229,9 +255,9 @@ hi Folded term=bold,underline ctermbg=255 guibg=LightMagenta
 " Pmenu
 hi PmenuSel term=underline cterm=underline gui=underline ctermbg=81 guibg=LightBlue
 " --------------------------------END------------------------------------------
-" }}}
 "
-" PLUGIN {{{
+"
+" PLUGIN
 " ================================PLUGIN=======================================
 " --------------------------------BEGIN----------------------------------------
 set nocompatible                " be iMproved, required
@@ -248,9 +274,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'L9'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
-" Plugin 'emmetio/emmet'
-Plugin 'mattn/emmet-vim'
-Plugin 'othree/html5.vim'
+" Plugin 'emmetio/emmet'                " HTML, CSS 利器
+" Plugin 'mattn/emmet-vim'
+" Plugin 'othree/html5.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'powerline/fonts'                " 需手动安装一下字体
@@ -275,6 +301,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'darthmall/vim-vue'              " Vue.js syntax
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'nvie/vim-flake8'                " EPE8
+Plugin 'Yggdroot/indentLine'            " 显示对齐线
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -293,13 +320,13 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " --------------------------------END------------------------------------------
 "
-" vim-vue {{{
+" vim-vue
 " --------------------------------BEGIN----------------------------------------
 " $ npm i -g eslint eslint-plugin-vue
 " --------------------------------END------------------------------------------
-" }}}
 "
-" php.vim {{{
+"
+" php.vim
 " --------------------------------BEGIN----------------------------------------
 function! PhpSyntaxOverride()
     hi! def link phpDocTags  phpDefine
@@ -311,15 +338,15 @@ augroup phpSyntaxOverride
     autocmd FileType php call PhpSyntaxOverride()
 augroup END
 " --------------------------------END------------------------------------------
-" }}}
 "
-" html5 setting {{{
+"
+" html5 setting
 " --------------------------------BEGIN----------------------------------------
 let g:html5_event_handler_attributes_complete = 1
 " --------------------------------END------------------------------------------
-" }}}
 "
-" nerdtree settings {{{
+"
+" nerdtree settings
 " --------------------------------BEGIN----------------------------------------
 " autocmd vimenter * NERDTree
 au StdinReadPre * let s:std_in=1
@@ -327,9 +354,9 @@ au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\.pyc$', '\~$']        "ignore files in NERDTree
 " --------------------------------END------------------------------------------
-" }}}
 "
-" airline settings {{{
+"
+" airline settings
 " --------------------------------BEGIN----------------------------------------
 let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
@@ -350,9 +377,9 @@ source $VIMRUNTIME/menu.vim
 " 解决consle输出乱码
 language messages zh_CN.utf-8
 " --------------------------------END------------------------------------------
-" }}}
 "
-" emment settings {{{
+"
+" emment settings
 " --------------------------------BEGIN----------------------------------------
 let g:user_emmet_mode='n'
 let g:user_emmet_mode='inv'
@@ -362,9 +389,9 @@ let g:user_emmet_install_global=0
 let g:user_emmet_leader_key='<C-J>'
 autocmd FileType html,css,vue EmmetInstall
 " --------------------------------END------------------------------------------
-" }}}
 "
-" neocompletecache settings {{{
+"
+" neocompletecache settings
 " --------------------------------BEGIN----------------------------------------
 let g:acp_enableAtStartup=0
 let g:neocomplcache_enable_at_startup=1
@@ -386,9 +413,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 " --------------------------------END------------------------------------------
-" }}}
 "
-" ctrlp settings {{{
+"
+" ctrlp settings
 " --------------------------------BEGIN----------------------------------------
 "let g:ctrlp_map='<C-p>'
 "let g:ctrlp_cmd='CtrlP'
@@ -397,38 +424,29 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MaxOSX
 "let g:ctrlp_user_command='find %s -type f' "MaxOSX/Linux
 " --------------------------------END------------------------------------------
-" }}}
 "
-" nerdtree {{{
+"
+" nerdtree
 " --------------------------------BEGIN----------------------------------------
-let NERDTreeWinSize = 20     " 大小
+let NERDTreeWinSize = 20 " 大小
 " --------------------------------END------------------------------------------
-" }}}
 "
-" vimtweak {{{
+"
+" CTags & Taglist
 " --------------------------------BEGIN----------------------------------------
-" windows Gvim 透明
+let Tlist_Sort_Type               = "name" " 按照名称排序
+let Tlist_Show_One_file           = 1      " 只显示当前文件的tag
+let Tlist_Use_Right_Window        = 1      " 在右侧显示Taglist
+let Tlist_Use_SingleClick         = 1      " 单击tag就跳转到定义
+let Tlist_Compart_Format          = 1      " 压缩方式
+let Tlist_Exist_OnlyWindow        = 1      " 如果Taglist是最后一个窗口则退出Vim
+let Tlist_File_Fold_Auto_Close    = 0      " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column      = 0      " 不要显示折叠树
+let Tlist_GainFocus_On_ToggleOpen = 0      " 输入焦点在Taglist
 " --------------------------------END------------------------------------------
-" }}}
 "
-" CTags & Taglist {{{
-" --------------------------------BEGIN----------------------------------------
-" 功能：
-" 1.<F9>打开和关闭Taglist
-let Tlist_Sort_Type            = "name"  " 按照名称排序
-let Tlist_Show_One_file        = 1     " 只显示当前文件的tag
-let Tlist_Use_Right_Window     = 1      " 在右侧显示Taglist
-let Tlist_Use_SingleClick      = 1     " 单击tag就跳转到定义
-let Tlist_Compart_Format       = 1      " 压缩方式
-let Tlist_Exist_OnlyWindow     = 1      " 如果Taglist是最后一个窗口则退出Vim
-let Tlist_File_Fold_Auto_Close = 0      " 不要关闭其他文件的tags
-let Tlist_Enable_Fold_Column   = 0      " 不要显示折叠树
-" 使用:TlistToggle打开Taglist时，输入焦点在Taglist
-let Tlist_GainFocus_On_ToggleOpen   = 0
-" --------------------------------END------------------------------------------
-" }}}
 "
-" syntatic {{{
+" syntatic
 " --------------------------------BEGIN----------------------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -444,9 +462,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 " 其他语法检测依赖 (如: js, css, python, xml ...)
 " https://github.com/humiaozuzu/dot-vimrc#dependencie
 " --------------------------------END------------------------------------------
-" }}}
 "
-" vim-hsftp {{{
+"
+" vim-hsftp
 " --------------------------------BEGIN----------------------------------------
 " $ vim your-project/.hsftp
 " ```.hsftp
@@ -481,19 +499,28 @@ let g:syntastic_javascript_checkers = ['eslint']
 " -     endif
 " -   endif
 " --------------------------------END------------------------------------------
-" }}}
 "
-" vim-gitgutter {{{
+"
+" vim-gitgutter
 " --------------------------------BEGIN----------------------------------------
 set updatetime=250
 " --------------------------------END------------------------------------------
-" }}}
 "
-" kien/rainbow_parentheses.vim {{{
+"
+" kien/rainbow_parentheses.vim
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-" }}}
+"
 " ================================PLUGIN=======================================
-" }}}
+"
+"
+" Yggdroot/indentLine
+" let g:indentLine_setColors = 0
+" let g:indentLine_enabled = 1
+" let g:indentLine_color_term = 239
+" let g:indentLine_bgcolor_term = 202
+" let g:indentLine_bgcolor_gui = '#FF5F00'
+let g:indentLine_char = '┊' " ┊|
+" let g:indentLine_setConceal = 0
