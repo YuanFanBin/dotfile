@@ -72,7 +72,7 @@ nmap <LEADER>b :Tagbar<CR>
 "  [Golang]
 nmap <LEADER>m :GoDoc<CR>
 
-au BufWrite *.py *.md *.vimrc exec '%s/\s\+$//g'         " 替换尾部空格及TAB
+" au BufWrite *.py *.md *.vimrc exec '%s/\s\+$//g'         " 替换尾部空格及TAB
 
 " --------------------------------------
 " --------------------------------END------------------------------------------
@@ -282,25 +282,25 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'powerline/fonts'                " 需手动安装一下字体
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'                   " [Golang]
 Plugin 'godlygeek/tabular'
 Plugin 'stanangeloff/php.vim'
 " Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plugin 'scrooloose/syntastic'           " syntastic 语法检查
+" Plugin 'scrooloose/syntastic'         " syntastic 语法检查
+" Plugin 'darthmall/vim-vue'            " Vue.js syntax
 Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
-" Plugin 'valloric/youcompleteme'         " ycm
+" Plugin 'valloric/youcompleteme'       " ycm
 " Plugin 'shawncplus/phpcomplete.vim'
 " Plugin 'shougo/neocomplcache.vim'
 Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
-Plugin 'easymotion/vim-easymotion'      " 快速跳转
+" Plugin 'easymotion/vim-easymotion'    " 快速跳转
 Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
 Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
-Plugin 'tpope/vim-dispatch'
-Plugin 'darthmall/vim-vue'              " Vue.js syntax
+" Plugin 'tpope/vim-dispatch'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'nvie/vim-flake8'                " EPE8
+Plugin 'nvie/vim-flake8'                " [Python] EPE8
 Plugin 'Yggdroot/indentLine'            " 显示对齐线
 
 call vundle#end()            " required
@@ -326,7 +326,7 @@ filetype plugin indent on    " required
 " --------------------------------END------------------------------------------
 "
 "
-" php.vim
+" <PLUGIN - php.vim>
 " --------------------------------BEGIN----------------------------------------
 function! PhpSyntaxOverride()
     hi! def link phpDocTags  phpDefine
@@ -340,37 +340,37 @@ augroup END
 " --------------------------------END------------------------------------------
 "
 "
-" html5 setting
+" <PLUGIN - html5>
 " --------------------------------BEGIN----------------------------------------
 let g:html5_event_handler_attributes_complete = 1
 " --------------------------------END------------------------------------------
 "
 "
-" nerdtree settings
+" <PLUGIN - NerdTree>
 " --------------------------------BEGIN----------------------------------------
 " autocmd vimenter * NERDTree
 au StdinReadPre * let s:std_in=1
 au VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\.pyc$', '\~$']        "ignore files in NERDTree
+let NERDTreeWinSize = 20 " 大小
 " --------------------------------END------------------------------------------
 "
 "
-" airline settings
+" <PLUGIN - airline>
 " --------------------------------BEGIN----------------------------------------
 let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#enabled      = 1
+let g:airline#extensions#tabline#left_sep     = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 set laststatus=2
 set t_Co=256
 let g:Powerline_symbols='fancy'
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10 "config font for gvim
 set encoding=utf-8
-set fenc=gbk
 " 解决菜单乱码问题
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -379,25 +379,25 @@ language messages zh_CN.utf-8
 " --------------------------------END------------------------------------------
 "
 "
-" emment settings
+" <PLUGIN - emment>
 " --------------------------------BEGIN----------------------------------------
-let g:user_emmet_mode='n'
-let g:user_emmet_mode='inv'
-let g:user_emmet_mode='a'
-let g:emmet_html5=0
-let g:user_emmet_install_global=0
-let g:user_emmet_leader_key='<C-J>'
+let g:user_emmet_mode           = 'n'
+let g:user_emmet_mode           = 'inv'
+let g:user_emmet_mode           = 'a'
+let g:emmet_html5               = 0
+let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key     = '<C-J>'
 autocmd FileType html,css,vue EmmetInstall
 " --------------------------------END------------------------------------------
 "
 "
-" neocompletecache settings
+" <PLUGIN - neocompletecache>
 " --------------------------------BEGIN----------------------------------------
-let g:acp_enableAtStartup=0
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_syntax_length=3
-let g:neocomplcache_lock_buffer_name_pattern='\*ku\*'
+let g:acp_enableAtStartup                    = 0
+let g:neocomplcache_enable_at_startup        = 1
+let g:neocomplcache_enable_smart_case        = 1
+let g:neocomplcache_min_syntax_length        = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 inoremap <expr><C-g> neocomplcache#unde_completion()
 inoremap <expr><C-l> neocomplcache#comlete_common_string()
@@ -415,7 +415,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 " --------------------------------END------------------------------------------
 "
 "
-" ctrlp settings
+" <PLUGIN - ctrlp>
 " --------------------------------BEGIN----------------------------------------
 "let g:ctrlp_map='<C-p>'
 "let g:ctrlp_cmd='CtrlP'
@@ -426,13 +426,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 " --------------------------------END------------------------------------------
 "
 "
-" nerdtree
-" --------------------------------BEGIN----------------------------------------
-let NERDTreeWinSize = 20 " 大小
-" --------------------------------END------------------------------------------
-"
-"
-" CTags & Taglist
+" <PLUGIN - CTags & Taglist>
 " --------------------------------BEGIN----------------------------------------
 let Tlist_Sort_Type               = "name" " 按照名称排序
 let Tlist_Show_One_file           = 1      " 只显示当前文件的tag
@@ -446,25 +440,27 @@ let Tlist_GainFocus_On_ToggleOpen = 0      " 输入焦点在Taglist
 " --------------------------------END------------------------------------------
 "
 "
-" syntatic
+" <PLUGIN - syntatic>
 " --------------------------------BEGIN----------------------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
+" [ES LINT]
 " eslint: https://github.com/eslint/eslint#global-installation-and-usage
 " ~/.eslintrc.js
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_checkers = ['eslint']
+"
 " 其他语法检测依赖 (如: js, css, python, xml ...)
 " https://github.com/humiaozuzu/dot-vimrc#dependencie
 " --------------------------------END------------------------------------------
 "
 "
-" vim-hsftp
+" <PLUGIN - vim-hsftp>
 " --------------------------------BEGIN----------------------------------------
 " $ vim your-project/.hsftp
 " ```.hsftp
@@ -501,22 +497,23 @@ let g:syntastic_javascript_checkers = ['eslint']
 " --------------------------------END------------------------------------------
 "
 "
-" vim-gitgutter
+" <PLUGIN - vim-gitgutter>
 " --------------------------------BEGIN----------------------------------------
 set updatetime=250
 " --------------------------------END------------------------------------------
 "
 "
-" kien/rainbow_parentheses.vim
+" <PLUGIN - rainbow parentheses>
+" --------------------------------BEGIN----------------------------------------
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+" --------------------------------END------------------------------------------
 "
-" ================================PLUGIN=======================================
 "
-"
-" Yggdroot/indentLine
+" --------------------------------BEGIN----------------------------------------
+" <PLUGIN - indentLine>
 " let g:indentLine_setColors = 0
 " let g:indentLine_enabled = 1
 " let g:indentLine_color_term = 239
@@ -524,3 +521,5 @@ au Syntax * RainbowParenthesesLoadBraces
 " let g:indentLine_bgcolor_gui = '#FF5F00'
 let g:indentLine_char = '┊' " ┊|
 " let g:indentLine_setConceal = 0
+" --------------------------------END------------------------------------------
+" ================================PLUGIN=======================================
