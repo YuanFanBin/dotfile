@@ -300,8 +300,15 @@ Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
 Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
 " Plugin 'tpope/vim-dispatch'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'nvie/vim-flake8'                " [Python] EPE8
 Plugin 'Yggdroot/indentLine'            " 显示对齐线
+" [Python]
+Plugin 'nvie/vim-flake8'                " [Python] EPE8
+" http://vimawesome.com/plugin/yapf
+" https://github.com/google/yapf
+" $ sudo pip install yapf
+" $ sudo pip install futures
+Plugin 'google/yapf', { 'rtp': 'plugins/vim'  }
+Plugin 'klen/python-mode'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -521,5 +528,11 @@ au Syntax * RainbowParenthesesLoadBraces
 " let g:indentLine_bgcolor_gui = '#FF5F00'
 let g:indentLine_char = '┊' " ┊|
 " let g:indentLine_setConceal = 0
+" --------------------------------END------------------------------------------
+"
+
+" --------------------------------BEGIN----------------------------------------
+" <PLUGIN - yapf>
+map <C-Y> :call yapf#YAPF()<cr>
 " --------------------------------END------------------------------------------
 " ================================PLUGIN=======================================
