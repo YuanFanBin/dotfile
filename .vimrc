@@ -133,7 +133,7 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
 " [SHELL :cscope]
 if has("cscope")
     set cscopequickfix=s-,c-,d-,i-,t-,e-
-    set cscopetag                   " Ctrl+], Ctrl+t 跳转
+    " set cscopetag                   " Ctrl+], Ctrl+t 跳转（出现选择）
     set csto=0                      " 是否反向搜索
     if filereadable("cscope.out")   " 在当前目录中添加任何数据库
         cs add cscope.out
@@ -144,7 +144,7 @@ if has("cscope")
 endif
 
 " [SHELL: tags]
-set tags=./tags
+set tags=tags;
 " --------------------------------------
 " --------------------------------END------------------------------------------
 "
@@ -213,9 +213,9 @@ set showcmd      " 显示键入命令
 set cmdheight=1  " 设置命令行高度为1,默认1
 set wildmenu     " 增强模式下命令行Tab
 if exists('+colorcolumn')
-    set colorcolumn=80
+    " set colorcolumn=80
 else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    " au BufWinEnter *.go *.py let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 " --------------------------------END------------------------------------------
 "
@@ -307,8 +307,8 @@ Plugin 'nvie/vim-flake8'                " [Python] EPE8
 " https://github.com/google/yapf
 " $ sudo pip install yapf
 " $ sudo pip install futures
-Plugin 'google/yapf', { 'rtp': 'plugins/vim'  }
-Plugin 'klen/python-mode'
+" Plugin 'google/yapf', { 'rtp': 'plugins/vim'  }
+" Plugin 'klen/python-mode'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
