@@ -288,9 +288,10 @@ Plugin 'godlygeek/tabular'
 Plugin 'stanangeloff/php.vim'
 " Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plugin 'scrooloose/syntastic'         " syntastic 语法检查
 " Plugin 'darthmall/vim-vue'            " Vue.js syntax
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'scrooloose/syntastic'         " syntastic 语法检查
+" Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'                       " Asynchronous Lint Engine
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
 " Plugin 'valloric/youcompleteme'       " ycm
 " Plugin 'shawncplus/phpcomplete.vim'
@@ -429,8 +430,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 "let g:ctrlp_cmd='CtrlP'
 "
 "let g:ctrlp_working_path_mode='ra'
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MaxOSX
-"let g:ctrlp_user_command='find %s -type f' "MaxOSX/Linux
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip "Linux/MacOSX
+"let g:ctrlp_user_command='find %s -type f' "MacOSX/Linux
 " --------------------------------END------------------------------------------
 "
 "
