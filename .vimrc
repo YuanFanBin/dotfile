@@ -144,7 +144,7 @@ endif
 
 " [SHELL: tags]
 set tags=tags;
-set autochdir " 自动切换目录
+" set autochdir " 自动切换目录
 " au BufRead,BufNewFile,BufEnter * cd %:p:h " 自动切换目录为当前编辑文件所在目录
 " --------------------------------------
 " --------------------------------END------------------------------------------
@@ -289,7 +289,7 @@ Plugin 'stanangeloff/php.vim'
 " Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'darthmall/vim-vue'            " Vue.js syntax
-" Plugin 'scrooloose/syntastic'         " syntastic 语法检查
+" Plugin 'scrooloose/syntastic'         " syntastic 语法检查(配置)
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale'                       " Asynchronous Lint Engine
 Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
@@ -449,16 +449,16 @@ let Tlist_GainFocus_On_ToggleOpen = 0      " 输入焦点在Taglist
 " --------------------------------END------------------------------------------
 "
 "
-" <PLUGIN - syntatic>
+" <PLUGIN - syntastic>
 " --------------------------------BEGIN----------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list            = 1
+" let g:syntastic_check_on_open            = 1
+" let g:syntastic_check_on_wq              = 0
 " [ES LINT]
 " eslint: https://github.com/eslint/eslint#global-installation-and-usage
 " ~/.eslintrc.js
