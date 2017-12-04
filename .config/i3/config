@@ -118,7 +118,7 @@ bindsym $mod+s mode "resize"
 
 # i3窗口调整(i3-gaps)
 # (Airblader/i3 - Github)[https://github.com/Airblader/i3]
-gaps inner 5
+# gaps inner 5
 
 # 声音调节(shell)
 # bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
