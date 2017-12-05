@@ -20,8 +20,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 #-----------------------------------------------------------------------------#
 
-export I3_CONFIG_DIR="$(dirname $(readlink -f $0))"
-
+export I3_CONFIG_DIR="~/.config/i3"
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/workspace/golang
+export PATH="$PATH:$I3_CONFIG_DIR/bin:$HOME/bin:$GOROOT/bin:$GOPATH/bin"
+export TERMNAL="st"
 
 # sysresources=/etc/X11/xinit/.Xresources
 # if [ -f $sysresources ]; then
@@ -61,6 +64,9 @@ udiskie &
 
 # [输入法]
 fcitx &
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 # [composite manager]
 xcompmgr &
