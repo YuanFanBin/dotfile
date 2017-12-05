@@ -1,0 +1,7 @@
+#!/bin/bash
+echo '{"version":1}'
+echo '['
+echo '[],'
+conky -c ~/.config/i3/conkyrc
+
+# https://i3wm.org/docs/user-contributed/conky-i3bar.html
