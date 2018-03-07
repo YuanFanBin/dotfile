@@ -93,13 +93,18 @@ bindsym $mod+z reload
 # [st终端] 新建
 bindsym $mod+Return exec st -f "Liberation Mono:size=10"
 # [st终端] 透明
-bindsym $mod+Escape exec transset-df -a
+bindsym $mod+Escape exec transset
+bindsym $mod+1 exec transset-df -a .2
+bindsym $mod+2 exec transset-df -a .4
+bindsym $mod+3 exec transset-df -a .6
+bindsym $mod+4 exec transset-df -a .8
+bindsym $mod+5 exec transset-df -a
 
 # kill终端
 bindsym $mod+c kill
 
 # dmenu
-bindsym $mod+p exec dmenu_run -p run -sb "$based1"  -nb "$based3" -nf "$based0" -fn Terminus-11
+bindsym $mod+p exec dmenu_run -p run -sb "$green"  -nb "$based3" -nf "$blue" -fn Terminus-11
 bindsym $mod+Shift+p exec ~/bin/pass-autotype -sb "$magenta" -nb "$based3" -nf "$based0" -fn Terminus-11
 
 # 窗口大小调整
@@ -118,7 +123,7 @@ bindsym $mod+s mode "resize"
 
 # i3窗口调整(i3-gaps)
 # (Airblader/i3 - Github)[https://github.com/Airblader/i3]
-# gaps inner 5
+gaps inner 5
 
 # 声音调节(shell)
 # bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
@@ -154,7 +159,7 @@ bar {
     colors {
         statusline $based0
         background $based3
-        focused_workspace $based3 $based3 $base3
+        focused_workspace $based3 $green $base3
         inactive_workspace $based3 $based2 $base0
         active_workspace $based3 $based2 $base3
         urgent_workspace $based3 $magenta $base2
