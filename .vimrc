@@ -129,6 +129,18 @@ au BufRead,BufNewFile *.py
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match Error /\s\+$/
 " -------------------------------------
 
+" [autocmd -> clang-format LLVM]
+" -------------------------------------
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+
+function! Formatonsave()
+    let l:lines="all"
+    pyf ~/bin/clang-format.py
+endfunction
+
+autocmd BufWritePre *.c,*.h,*.cc,*.cpp call Formatonsave()
+" -------------------------------------
+
 " [SHELL :cscope]
 if has("cscope")
     set cscopequickfix=s-,c-,d-,i-,t-,e-
