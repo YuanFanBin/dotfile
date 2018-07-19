@@ -92,6 +92,7 @@ bindsym $mod+z reload
 
 # [st终端] 新建
 bindsym $mod+Return exec st -f "Liberation Mono:size=10"
+bindsym $mod+0      exec st-black -f "Liberation Mono:size=10"
 # [st终端] 透明
 bindsym $mod+Escape exec transset
 bindsym $mod+1 exec transset-df -a .2

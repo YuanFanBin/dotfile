@@ -20,7 +20,7 @@
 " __TAB___ Q W E R T Y U I O P { } ___|____
 " CAPSLOCK_ A S D F G H J K L : " __ENTER__
 " __SHIFT__  Z X C V B N M < > ? ___SHIFT__
-" CTRL WIN AL ____SPACE____ ALT FN PN CTRL
+" CTRL WIN ALT ____SPACE____ ALT FN PN CTRL
 "------------------------------------------
 
 " LEADER 键配置
@@ -225,8 +225,10 @@ endif
 " --------------------------------BEGIN----------------------------------------
 set writebackup                 " 保存文件前建立备份,保存成功后删除备份
 set nobackup                    " 设置无备份文件
-" set clipboard+=unnamed        " 共享剪切板(MacOS)
-set clipboard+=unnamedplus      " 共享剪切板(Arch)
+" $ vim --version | grep clipboard
+" gvim 支持clipboard
+set clipboard+=unnamed        " 共享剪切板(MacOS)
+" set clipboard+=unnamedplus      " 共享剪切板(Arch)
 set confirm                     " 保存只读文件时,弹出确认
 set history=1000                " 历史记录数
 set iskeyword+=_,$,@,%,#,-      " 带有如下符号单词不被换行分割
@@ -270,7 +272,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'           " vim-commentary 快捷注释(`gc`) 支持 `:Visual`
+" Plugin 'tpope/vim-commentary'           " vim-commentary 快捷注释(`gc`) 支持 `:Visual`
 Plugin 'tpope/vim-surround'
 Plugin 'L9'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -282,12 +284,12 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'powerline/fonts'                " 需手动安装一下字体
 Plugin 'bling/vim-airline'
-Plugin 'elzr/vim-json'
+" Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'                   " [Golang]
 Plugin 'godlygeek/tabular'
-Plugin 'stanangeloff/php.vim'
+" Plugin 'stanangeloff/php.vim'
 " Plugin 'kien/ctrlp.vim'               " ctrlp 模糊搜索
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'darthmall/vim-vue'            " Vue.js syntax
 " Plugin 'scrooloose/syntastic'         " syntastic 语法检查(配置)
 " Plugin 'vim-syntastic/syntastic'
@@ -296,15 +298,15 @@ Plugin 'airblade/vim-gitgutter'         " vim-gitgutter git修改提示
 " Plugin 'valloric/youcompleteme'       " ycm
 " Plugin 'shawncplus/phpcomplete.vim'
 " Plugin 'shougo/neocomplcache.vim'
-Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
+" Plugin 'mileszs/ack.vim'                " ack 项目词搜索( install 'ack' command )
 " Plugin 'easymotion/vim-easymotion'    " 快速跳转
-Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
-Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
+" Plugin 'terryma/vim-multiple-cursors'   " 多光标操作
+" Plugin 'hesselbom/vim-hsftp'            " sftp 上传下载文件
 " Plugin 'tpope/vim-dispatch'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Yggdroot/indentLine'            " 显示对齐线
 " [Python]
-Plugin 'nvie/vim-flake8'                " [Python] EPE8
+" Plugin 'nvie/vim-flake8'                " [Python] EPE8
 " http://vimawesome.com/plugin/yapf
 " https://github.com/google/yapf
 " $ sudo pip install yapf
@@ -337,21 +339,21 @@ filetype plugin indent on    " required
 "
 " <PLUGIN - php.vim>
 " --------------------------------BEGIN----------------------------------------
-function! PhpSyntaxOverride()
-    hi! def link phpDocTags  phpDefine
-    hi! def link phpDocParam phpType
-endfunction
-
-augroup phpSyntaxOverride
-    autocmd!
-    autocmd FileType php call PhpSyntaxOverride()
-augroup END
+" function! PhpSyntaxOverride()
+"     hi! def link phpDocTags  phpDefine
+"     hi! def link phpDocParam phpType
+" endfunction
+" 
+" augroup phpSyntaxOverride
+"     autocmd!
+"     autocmd FileType php call PhpSyntaxOverride()
+" augroup END
 " --------------------------------END------------------------------------------
 "
 "
 " <PLUGIN - html5>
 " --------------------------------BEGIN----------------------------------------
-let g:html5_event_handler_attributes_complete = 1
+" let g:html5_event_handler_attributes_complete = 1
 " --------------------------------END------------------------------------------
 "
 "
@@ -390,37 +392,37 @@ language messages zh_CN.utf-8
 "
 " <PLUGIN - emment>
 " --------------------------------BEGIN----------------------------------------
-let g:user_emmet_mode           = 'n'
-let g:user_emmet_mode           = 'inv'
-let g:user_emmet_mode           = 'a'
-let g:emmet_html5               = 0
-let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key     = '<C-J>'
-autocmd FileType html,css,vue EmmetInstall
+" let g:user_emmet_mode           = 'n'
+" let g:user_emmet_mode           = 'inv'
+" let g:user_emmet_mode           = 'a'
+" let g:emmet_html5               = 0
+" let g:user_emmet_install_global = 0
+" let g:user_emmet_leader_key     = '<C-J>'
+" autocmd FileType html,css,vue EmmetInstall
 " --------------------------------END------------------------------------------
 "
 "
 " <PLUGIN - neocompletecache>
 " --------------------------------BEGIN----------------------------------------
-let g:acp_enableAtStartup                    = 0
-let g:neocomplcache_enable_at_startup        = 1
-let g:neocomplcache_enable_smart_case        = 1
-let g:neocomplcache_min_syntax_length        = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-inoremap <expr><C-g> neocomplcache#unde_completion()
-inoremap <expr><C-l> neocomplcache#comlete_common_string()
-
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS>  neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancle_popup()
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
+" let g:acp_enableAtStartup                    = 0
+" let g:neocomplcache_enable_at_startup        = 1
+" let g:neocomplcache_enable_smart_case        = 1
+" let g:neocomplcache_min_syntax_length        = 3
+" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" 
+" inoremap <expr><C-g> neocomplcache#unde_completion()
+" inoremap <expr><C-l> neocomplcache#comlete_common_string()
+" 
+" "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" "inoremap <expr><BS>  neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-y> neocomplcache#close_popup()
+" inoremap <expr><C-e> neocomplcache#cancle_popup()
+" 
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#ComplateTags
 " --------------------------------END------------------------------------------
 "
 "
