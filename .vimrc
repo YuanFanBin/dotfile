@@ -138,7 +138,7 @@ function! Formatonsave()
     pyf ~/bin/clang-format.py
 endfunction
 
-autocmd BufWritePre *.c,*.h,*.cc,*.cpp call Formatonsave()
+" autocmd BufWritePre *.c,*.h,*.cc,*.cpp call Formatonsave()
 " -------------------------------------
 
 " [SHELL :cscope]
@@ -325,6 +325,7 @@ Plugin 'Yggdroot/indentLine'            " 显示对齐线
 " $ sudo pip install futures
 " Plugin 'google/yapf', { 'rtp': 'plugins/vim'  }
 " Plugin 'klen/python-mode'
+Plugin 'rust-lang/rust.vim'             " rustfmt
 
 call vundle#end()            " required
 filetype plugin indent on    " required
