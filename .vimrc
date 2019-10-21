@@ -326,6 +326,9 @@ Plugin 'Yggdroot/indentLine'            " 显示对齐线
 " Plugin 'google/yapf', { 'rtp': 'plugins/vim'  }
 " Plugin 'klen/python-mode'
 Plugin 'rust-lang/rust.vim'             " rustfmt
+Plugin 'chr4/nginx.vim'
+Plugin 'posva/vim-vue'
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
